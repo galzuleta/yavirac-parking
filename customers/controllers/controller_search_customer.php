@@ -2,6 +2,8 @@
 include('../../app/config.php');
 
 $plate = $_GET['plate'];
+$id_map = $_GET['id_map'];
+
 $plate = strtoupper($plate);
 
 $id_customer = '';
@@ -39,48 +41,41 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
         ?>
         <div class="form-group">
             <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Cédula:</label>
+                <label for="" class="col-sm-2 col-form-label">Cédula:</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="identificacion<?php echo $id_map;?>" >
+                <input type="text" class="form-control" id="identification<?php echo $id_map;?>" >
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="name<?php echo $id_map;?>"   >
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">Nombre:</label>
+                <input type="text" class="form-control" id="name_customer<?php echo $id_map;?>"   >
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Apellido:</label>
-                <div class="col-sm-10">
+            <div class="col-md-6">
+                <label for="">Apellido:</label>
                 <input type="text" class="form-control" id="lastname<?php echo $id_map;?>" >
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Tipo de Transporte:</label>
-                <div class="col-sm-8">
-                <select name="" id="type_transport<?php echo $id_map;?>" class="form-control" disabled>
-                    <option value="AUTOMOVIL">AUTOMOVIL</option>
-                    <option value="MOTOCICLETA">MOTOCICLETA</option>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">Tipo de Transporte:</label>
+                    <select name="" id="type_transport<?php echo $id_map;?>" class="form-control">
+                        <option value="AUTOMOVIL">AUTOMOVIL</option>
+                        <option value="MOTOCICLETA">MOTOCICLETA</option>
                 </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Tipo de Cliente:</label>
-            <div class="col-sm-8">
-            <select name="" id="type_customer<?php echo $id_map;?>" class="form-control" disabled>
-                <option value="ESTUDIANTE">ESTUDIANTE</option>
-                <option value="DOCENTE">DOCENTE</option>
-                <option value="VISITANTE">VISITANTE</option>
-            </select>
+            <div class="col-md-6">
+                <label for="">Tipo de Cliente:</label>
+                <select name="" id="type_customer<?php echo $id_map;?>" class="form-control">
+                    <option value="ESTUDIANTE">ESTUDIANTE</option>
+                    <option value="DOCENTE">DOCENTE</option>
+                    <option value="VISITANTE">VISITANTE</option>
+                </select>
+                </div>
         </div>
         <hr>
         <?php
@@ -89,46 +84,38 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
         ?>
         <div class="form-group">
             <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Cédula:</label>
+                <label for="" class="col-sm-2 col-form-label">Cédula:</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="identificacion<?php echo $id_map;?>" value="<?php echo $identification;?>" >
+                <input type="text" disabled class="form-control" id="identification<?php echo $id_map;?>" value="<?php echo $identification;?>" >
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="name<?php echo $id_map;?>" value="<?php echo $name_customer;?>" >
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">Nombre:</label>
+                <input type="text" disabled class="form-control" id="name_customer<?php echo $id_map;?>" value="<?php echo $name_customer;?>" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="">Apellido:</label>
+                <input type="text" disabled class="form-control" id="lastname<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Apellido:</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="lastname<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Tipo de Transporte:</label>
-                <div class="col-sm-8">
-                <select name="" id="type_transport<?php echo $id_map;?>" class="form-control">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">Tipo de Transporte:</label>
+                <select name="" disabled id="type_transport<?php echo $id_map;?>" class="form-control">
                     <option value="<?php echo $type_transport;?>"><?php echo $type_transport;?></option>
                 </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Tipo de Cliente:</label>
-                <div class="col-sm-8">
-                <select name="" id="type_customer<?php echo $id_map;?>" class="form-control">
+            <div class="col-md-6">
+                <label for="">Tipo de Cliente:</label>
+                <select name="" disabled id="type_customer<?php echo $id_map;?>" class="form-control">
                     <option value="<?php echo $type_customer;?>"><?php echo $type_customer;?></option>
                 </select>
-            </div>
+                </div>
         </div>
         <?php
 

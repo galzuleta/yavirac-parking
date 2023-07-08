@@ -1,7 +1,7 @@
 CREATE TABLE tickets(
     id_ticket                      INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     
-    name_cliente                   VARCHAR (255) NOT NULL,
+    name_customer                   VARCHAR (255) NOT NULL,
     identification                 VARCHAR (255) NOT NULL,
     type_transport                  VARCHAR (255) NOT NULL,
     type_customer                   VARCHAR (255) NOT NULL,

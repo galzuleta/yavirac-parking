@@ -68,12 +68,13 @@ $html = '
         '.$city.' - '.$country.' <br>
         --------------------------------------------------------------------------------
         <div style="text-align: left">
-            <b>Datos del cliente:</b> <br>
+            <b>DATOS DEL CLIENTE</b> <br>
             <b>Señor/a:</b>           <br>
             <b>Identificación:</b>    <br>
             <b>Tipo cliente:</b>      <br>
             --------------------------------------------------------------------------------<br>
             <b>Tipo de vehículo:</b> <br>
+            <b>No.cubículo:</b> <br>
             <b>Fecha de ingreso:</b> <br>
             <b>Hora de ingreso:</b> <br>
             --------------------------------------------------------------------------------<br>

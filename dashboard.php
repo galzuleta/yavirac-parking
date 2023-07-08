@@ -95,7 +95,7 @@ include('layout/admin/data_user_session.php');
                                                                                             $month = date('m');
                                                                                             $year = date('Y');
                                                                                             ?>
-                                                                                        <input type="date" class="form-control" id="" value="<?php echo $year."-".$month."-".$day;?>" >
+                                                                                        <input type="date" id="entry_date<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $year."-".$month."-".$day;?>" >
                                                                                     </div>
                                                                                 </div>
 
@@ -108,7 +108,15 @@ include('layout/admin/data_user_session.php');
                                                                                                 $hour = date('H');
                                                                                                 $minute = date('i');
                                                                                                 ?>
-                                                                                            <input type="time" class="form-control" id="" value="<?php echo $hour.":".$minute;?>" >
+                                                                                            <input type="time" id="entry_time<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $hour.":".$minute;?>" >
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail" class="col-sm-3 col-form-label">Cubículo:</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            <input disabled type="text" class="form-control" id="cubicle<?php echo $id_map;?>" value="<?php echo $no_space;?>" >
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -116,8 +124,25 @@ include('layout/admin/data_user_session.php');
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                    <button type="submit" name="submitSave" class="btn btn-primary">Imprimir Ticket</button>
+                                                                    <button type="button" id="register_ticket<?php echo $id_map;?>" class="btn btn-primary">Imprimir Ticket</button>
                                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                                        <script>
+                                                                            $('#register_ticket<?php echo $id_map;?>').click(function (){
+                                                                                var plate = $('#plate_search<?php echo $id_map;?>').val();
+                                                                                var identification = $('#identificacion<?php echo $id_map;?>').val();
+                                                                                var name = $('#name<?php echo $id_map;?>').val();
+                                                                                var lastname = $('#lastname<?php echo $id_map;?>').val();
+                                                                                var type_transport = $('#type_transport<?php echo $id_map;?>').val();
+                                                                                var type_customer = $('#type_customer<?php echo $id_map;?>').val();
+                                                                                var entry_date = $('#entry_date<?php echo $id_map;?>').val();
+                                                                                var entry_time = $('#entry_time<?php echo $id_map;?>').val();
+                                                                                var cubicle = $('#cubicle<?php echo $id_map;?>').val();
+
+                                                                                if (name == null){
+                                                                                }
+
+                                                                            });
+                                                                        </script>
                                                                     </div>
                                                                 </form>
                                                             </div>

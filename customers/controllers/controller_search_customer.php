@@ -41,7 +41,7 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
         ?>
         <div class="form-group">
             <div class="mb-3 row">
-                <label for="" class="col-sm-2 col-form-label">Cédula:</label>
+                <label for="" class="col-sm-2 col-form-label">Cédula <span style="color: red"><b>*</b></label>
                 <div class="col-sm-10">
                 <input type="text" class="form-control" id="identification<?php echo $id_map;?>" >
             </div>
@@ -49,19 +49,19 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
 
         <div class="row">
             <div class="col-md-6">
-                <label for="">Nombre:</label>
+                <label for="">Nombre <span style="color: red"><b>*</b></label>
                 <input type="text" class="form-control" id="name_customer<?php echo $id_map;?>"   >
             </div>
 
             <div class="col-md-6">
-                <label for="">Apellido:</label>
+                <label for="">Apellido <span style="color: red"><b>*</b></label>
                 <input type="text" class="form-control" id="lastname_customer<?php echo $id_map;?>" >
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                <label for="">Tipo de Transporte:</label>
+                <label for="">Tipo de Transporte <span style="color: red"><b>*</b></label>
                     <select name="" id="type_transport<?php echo $id_map;?>" class="form-control">
                         <option value="AUTOMOVIL">AUTOMOVIL</option>
                         <option value="MOTOCICLETA">MOTOCICLETA</option>
@@ -69,7 +69,7 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
             </div>
 
             <div class="col-md-6">
-                <label for="">Tipo de Cliente:</label>
+                <label for="">Tipo de Cliente <span style="color: red"><b>*</b></label>
                 <select name="" id="type_customer<?php echo $id_map;?>" class="form-control">
                     <option value="ESTUDIANTE">ESTUDIANTE</option>
                     <option value="DOCENTE">DOCENTE</option>

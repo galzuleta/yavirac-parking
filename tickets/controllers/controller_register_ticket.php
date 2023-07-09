@@ -30,7 +30,11 @@ $sentence->bindParam('user_session', $user_session);
 
 if($sentence->execute()){
     echo "Registro guardado";
-    
+    ?>
+    <script>
+        location.href = "dashboard.php";
+    </script>
+    <?php 
 }else{
     echo "No se pudo guardar el registro";
 }

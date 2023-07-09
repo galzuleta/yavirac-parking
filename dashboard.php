@@ -173,6 +173,7 @@ include('layout/admin/data_user_session.php');
                                                                             });
                                                                         </script>
                                                                     </div>
+                                                                    <div id="answer"></div>
                                                                 </form>
                                                             </div>
                                                         </div>

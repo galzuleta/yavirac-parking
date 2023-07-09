@@ -3,7 +3,6 @@ include('../../app/config.php');
 
 $plate = $_GET['plate'];
 $id_map = $_GET['id_map'];
-
 $plate = strtoupper($plate);
 
 $id_customer = '';

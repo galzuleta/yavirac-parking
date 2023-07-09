@@ -113,31 +113,40 @@ include('layout/admin/data_user_session.php');
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Inicio de Sesión</h5>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background-image: url(public/img/logo_yavirac.png);
+                                      background-repeat: no-repeat;
+                                      z-index: 3;
+                                      background-size: 14vw 14vh;
+                                      background-position: center 20%;
+                                      background-color:rgb(245,245,245);
+                                      ">
+      <div class="modal-header" style="background-color:rgb(255, 112, 67);">
+        <h5 class="modal-title" id="exampleModalLabel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+          <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+        </svg>
+          Inicio de Sesión</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </div><br><br><br><br>
       <div class="modal-body">
-        <div class="row">
+        <div class="row"><br><br><br>
            <div class="col-md-12">
                 <div class="form-group">
-                    <label class="form-label" for="">Correo Electrónico</label>
-                    <input type="email" id="usuario" class="form-control">
+                    <input type="email" id="usuario" placeholder="Correo Electrónico" style="background-color: rgb(33, 33, 33); color: white;" class="form-control">
                 </div>
-           </div><br>
+           </div><br><br>
            <div class="col-md-12">
                 <div class="form-group">
-                    <label class="form-label" for="">Contraseña</label>
-                    <input type="password" id="password" class="form-control">
+                    <input type="password" id="password" placeholder="Contraseña"  style="background-color: rgb(33, 33, 33); color: white;" class="form-control">
                 </div>
            </div>
         </div><br>
         <div id="respuesta"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" id="ingresar" >Ingresar</button>
       </div>
     </div>

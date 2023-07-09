@@ -23,11 +23,10 @@ $query_ticket->execute();
 $tickets = $query_ticket->fetchAll(PDO::FETCH_ASSOC);
 foreach($tickets as $ticket){
     $id_ticket = $ticket['id_ticket'];
+    $plate = $ticket['plate'];
     $name_customer = $ticket['name_customer'];
     $lastname_customer = $ticket['lastname_customer'];
     $identification = $ticket['identification'];
-    $type_transport = $ticket['type_transport'];
-    $type_customer = $ticket['type_customer'];
     $cubicle = $ticket['cubicle'];
     $entry_date = $ticket['entry_date'];
     $entry_time = $ticket['entry_time'];
@@ -75,7 +74,7 @@ $pdf->AddPage();
 
 $html = '
 
-<div>
+<div style="">
     <p style="text-align: center">
         <b>'.$name_parking.'</b> <br>
         '.$entity_activity.'  <br>
@@ -85,12 +84,11 @@ $html = '
         '.$city.' - '.$country.' <br>
         --------------------------------------------------------------------------------
         <div style="text-align: left">
-            <b>DATOS DEL CLIENTE</b> <br>
-            <b>Señor/a:</b> '.$name_customer.' '.$lastname_customer.' <br>
-            <b>Identificación:</b> '.$identification.' <br>
-            <b>Tipo cliente:</b> '.$type_customer.' <br>
+            <b>INFORMACIÓN</b> <br>
+            <b>Señor/Srta:</b> '.$name_customer.' '.$lastname_customer.' <br>
+            <b>Cédula:</b> '.$identification.' <br>
             --------------------------------------------------------------------------------<br>
-            <b>Tipo de vehículo:</b> '.$type_transport.'<br>
+            <b>Placa de vehículo:</b> '.$plate.'<br>
             <b>Fecha de ingreso:</b> '.$entry_date.' <br>
             <b>Hora de ingreso:</b> '.$entry_time.' <br>
             --------------------------------------------------------------------------------<br>

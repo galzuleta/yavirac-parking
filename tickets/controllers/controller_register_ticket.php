@@ -2,6 +2,8 @@
 
 include('../../app/config.php');
 
+$plate = $_GET['plate'];
+$plate = strtoupper($plate);
 $name_customer = $_GET['name_customer'];
 $lastname_customer = $_GET['lastname_customer'];
 $identification = $_GET['identification'];
@@ -14,9 +16,10 @@ $user_session = $_GET['user_session'];
 
 
 $sentence = $pdo->prepare("INSERT INTO tickets 
-                        (name_customer, lastname_customer, identification, type_transport, type_customer, cubicle, entry_date, entry_time, user_session) 
-                        VALUES (:name_customer, :lastname_customer, :identification, :type_transport, :type_customer, :cubicle, :entry_date, :entry_time, :user_session)");
+                        (plate, name_customer, lastname_customer, identification, type_transport, type_customer, cubicle, entry_date, entry_time, user_session) 
+                        VALUES (:plate,:name_customer, :lastname_customer, :identification, :type_transport, :type_customer, :cubicle, :entry_date, :entry_time, :user_session)");
 
+$sentence->bindParam('plate', $plate);
 $sentence->bindParam('name_customer', $name_customer);
 $sentence->bindParam('lastname_customer', $lastname_customer);
 $sentence->bindParam('identification', $identification);

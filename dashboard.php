@@ -57,7 +57,7 @@ include('layout/admin/data_user_session.php');
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <div class="mb-3 row">
-                                                                                        <label for="staticEmail" class="col-sm-2 col-form-label">Placa <span style="color: red"><b>*</b></label>
+                                                                                        <label for="" class="col-sm-2 col-form-label">Placa <span style="color: red"><b>*</b></label>
                                                                                         <div class="col-sm-7">
                                                                                             <input type="text" style="text-transform:uppercase" class="form-control" id="plate_search<?php echo $id_map;?>" >
                                                                                         </div>
@@ -92,7 +92,7 @@ include('layout/admin/data_user_session.php');
                                                                                 <br>
                                                                                 <div class="form-group">
                                                                                     <div class="mb-3 row">
-                                                                                        <label for="staticEmail" class="col-sm-3 col-form-label">Fecha Ingreso:</label>
+                                                                                        <label for="" class="col-sm-3 col-form-label">Fecha Ingreso:</label>
                                                                                         <div class="col-sm-9">
                                                                                             <?php date_default_timezone_set("America/Guayaquil");
                                                                                             $date_time = date("Y-m-d h:i:s");
@@ -106,7 +106,7 @@ include('layout/admin/data_user_session.php');
 
                                                                                 <div class="form-group">
                                                                                     <div class="mb-3 row">
-                                                                                        <label for="staticEmail" class="col-sm-3 col-form-label">Hora Ingreso:</label>
+                                                                                        <label for="" class="col-sm-3 col-form-label">Hora Ingreso:</label>
                                                                                         <div class="col-sm-9">
                                                                                             <?php date_default_timezone_set("America/Guayaquil");
                                                                                                 $date_time = date("Y-m-d h:i:s");
@@ -119,7 +119,7 @@ include('layout/admin/data_user_session.php');
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <div class="mb-3 row">
-                                                                                        <label for="staticEmail" class="col-sm-3 col-form-label">Cubículo:</label>
+                                                                                        <label for="" class="col-sm-3 col-form-label">Cubículo:</label>
                                                                                         <div class="col-sm-9">
                                                                                             <input disabled type="text" class="form-control" id="cubicle<?php echo $id_map;?>" value="<?php echo $no_space;?>" >
                                                                                         </div>
@@ -167,11 +167,17 @@ include('layout/admin/data_user_session.php');
                                                                                     var url = 'parking/controllers/controller_occupied_enable.php';
                                                                                     $.get (url, { cubicle:cubicle}, function(datos){
                                                                                             $('#answer').html(datos);
-                                                                                    })
+                                                                                    });
 
                                                                                     var url_2 = 'tickets/controllers/controller_register_ticket.php';
                                                                                     $.get (url_2, {plate:plate, name_customer:name_customer, lastname_customer:lastname_customer, identification:identification, type_customer:type_customer, 
                                                                                         type_transport:type_transport, entry_date:entry_date, entry_time:entry_time, cubicle:cubicle, user_session:user_session}, function(datos){
+                                                                                            $('#answer').html(datos);
+                                                                                    });
+
+                                                                                    var url_3 = 'customers/controllers/controller_register_customer.php';
+                                                                                    $.get (url_3, {plate:plate, name_customer:name_customer, lastname_customer:lastname_customer, identification:identification, type_customer:type_customer, 
+                                                                                        type_transport:type_transport}, function(datos){
                                                                                             $('#answer').html(datos);
                                                                                     })
                                                                                 }
@@ -193,9 +199,114 @@ include('layout/admin/data_user_session.php');
                                                 <center>
                                                     <b><font face="Alex Brush" size="4"><?php echo $no_space;?></font></b>
                                                     <h2></h2>
-                                                    <button class="btn btn-info" >
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" id="occupied<?php echo $id_map;?>" class="btn btn-info" data-toggle="modal" data-target="#exampleModal<?php echo $id_map;?>">
                                                         <img src="<?php echo $URL;?>/public/img/auto.png" width="50px" alt="">
                                                     </button>
+
+                                                    <?php
+                                                        $query_ticket = $pdo->prepare("SELECT * FROM tickets WHERE cubicle = '$no_space' AND  enable_ticket = '1' ");
+                                                        $query_ticket->execute();
+                                                        $tickets = $query_ticket->fetchAll(PDO::FETCH_ASSOC);
+                                                        foreach($tickets as $ticket){
+                                                            $id_ticket = $ticket['id_ticket'];
+                                                            $plate = $ticket['plate'];
+                                                            $name_customer = $ticket['name_customer'];
+                                                            $lastname_customer = $ticket['lastname_customer'];
+                                                            $identification = $ticket['identification'];
+                                                            $cubicle = $ticket['cubicle'];
+                                                            $entry_date = $ticket['entry_date'];
+                                                            $entry_time = $ticket['entry_time'];
+                                                            $user_session = $ticket['user_session'];
+                                                        }
+                                                    ?>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal<?php echo $id_map;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content" style="background-color:rgb(245, 245, 245);">
+                                                        <div class="modal-header" style="background-color:rgb(255, 112, 67);">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                                            </svg>
+                                                                Información</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                    <div class="mb-3 row">
+                                                                        <label for="" class="col-sm-3 col-form-label">Placa:</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" style="text-transform: uppercase" class="form-control" value="<?php echo $plate;?>" id="plate<?php echo $id_map;?>" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Nombre:</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input type="text" disabled style="text-transform:uppercase" class="form-control" id="name_customer<?php echo $id_map;?>" value="<?php echo $name_customer;?>"  >
+                                                                            </div>        
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Apellido:</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input type="text" disabled style="text-transform:uppercase" class="form-control" id="lastname_customer<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
+                                                                            </div>      
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Fecha Ingreso:</label>
+                                                                            <div class="col-sm-9">
+                                                                            <input type="text" disabled id="entry_date<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_date; ?>" >
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Hora Ingreso:</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input type="text" disabled id="entry_time<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_time; ?>" >
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Cubículo:</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input disabled type="text" class="form-control" id="cubicle<?php echo $id_map;?>" value="<?php echo $no_space;?>" >
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                            <button type="button" class="btn btn-info">Re-Imprimir</button>
+                                                            <button type="button" class="btn btn-danger">Facturar</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                    <script>
+                                                        $('occupied<?php echo $id_map;?>').click(function(){
+
+
+                                                        });
+                                                    </script>
                                                     <p><?php echo $enable_space ?></p>
                                                 </center>
                                             </div>

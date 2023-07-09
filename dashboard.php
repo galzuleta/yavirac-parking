@@ -137,12 +137,14 @@ include('layout/admin/data_user_session.php');
                                                                                 var plate = $('#plate_search<?php echo $id_map;?>').val();
                                                                                 var identification = $('#identification<?php echo $id_map;?>').val();
                                                                                 var name_customer = $('#name_customer<?php echo $id_map;?>').val();
-                                                                                var lastname = $('#lastname<?php echo $id_map;?>').val();
+                                                                                var lastname_customer = $('#lastname_customer<?php echo $id_map;?>').val();
                                                                                 var type_transport = $('#type_transport<?php echo $id_map;?>').val();
                                                                                 var type_customer = $('#type_customer<?php echo $id_map;?>').val();
                                                                                 var entry_date = $('#entry_date<?php echo $id_map;?>').val();
                                                                                 var entry_time = $('#entry_time<?php echo $id_map;?>').val();
                                                                                 var cubicle = $('#cubicle<?php echo $id_map;?>').val();
+                                                                                var user_session = "<?php echo $usuario_sesion; ?>";
+
 
                                                                                 if (plate == ""){
                                                                                     alert('Debe de llenar el campo Placa');
@@ -156,17 +158,16 @@ include('layout/admin/data_user_session.php');
                                                                                     alert('Debe de llenar el campo Nombre');
                                                                                     $('#name_customer<?php echo $id_map;?>').focus();
                                                                                 }
-                                                                                else if (lastname == ""){
+                                                                                else if (lastname_customer == ""){
                                                                                     alert('Debe de llenar el campo Apellido');
-                                                                                    $('#lastname<?php echo $id_map;?>').focus();
+                                                                                    $('#lastname_customer<?php echo $id_map;?>').focus();
                                                                                 }
                                                                                 else{
                                                                                     var url = 'tickets/controllers/controller_register_ticket.php';
-                                                                                    $.get(url,{plate:plate, identification:identification, name_customer:name_customer, lastname:lastname, type_customer:type_customer,
-                                                                                        type_transport:type_transport,entry_date:entry_date,entry_time:entry_time,cubicle:cubicle
-                                                                                        },function (datos) {
-                                                                                        $('#answer<?php echo $id_map;?>').html(datos);
-                                                                                    });
+                                                                                    $.get (url, {plate:plate, name_customer:name_customer, lastname_customer:lastname_customer, identification, type_customer:type_customer, 
+                                                                                        type_transport:type_transport, entry_date:entry_date, entry_time:entry_time, cubicle, user_session}, function(datos){
+                                                                                            $('#answer').html(datos);
+                                                                                        })
                                                                                 }
 
                                                                             });

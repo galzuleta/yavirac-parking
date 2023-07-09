@@ -55,7 +55,7 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
 
             <div class="col-md-6">
                 <label for="">Apellido:</label>
-                <input type="text" class="form-control" id="lastname<?php echo $id_map;?>" >
+                <input type="text" class="form-control" id="lastname_customer<?php echo $id_map;?>" >
             </div>
         </div>
 
@@ -98,7 +98,7 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
 
             <div class="col-md-6">
                 <label for="">Apellido:</label>
-                <input type="text" disabled class="form-control" id="lastname<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
+                <input type="text" disabled class="form-control" id="lastname_customer<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
             </div>
         </div>
 

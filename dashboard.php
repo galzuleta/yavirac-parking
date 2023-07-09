@@ -163,11 +163,17 @@ include('layout/admin/data_user_session.php');
                                                                                     $('#lastname_customer<?php echo $id_map;?>').focus();
                                                                                 }
                                                                                 else{
-                                                                                    var url = 'tickets/controllers/controller_register_ticket.php';
-                                                                                    $.get (url, {plate:plate, name_customer:name_customer, lastname_customer:lastname_customer, identification, type_customer:type_customer, 
-                                                                                        type_transport:type_transport, entry_date:entry_date, entry_time:entry_time, cubicle, user_session}, function(datos){
+
+                                                                                    var url = 'parking/controllers/controller_occupied_enable.php';
+                                                                                    $.get (url, { cubicle:cubicle}, function(datos){
                                                                                             $('#answer').html(datos);
-                                                                                        })
+                                                                                    })
+
+                                                                                    var url_2 = 'tickets/controllers/controller_register_ticket.php';
+                                                                                    $.get (url_2, {plate:plate, name_customer:name_customer, lastname_customer:lastname_customer, identification:identification, type_customer:type_customer, 
+                                                                                        type_transport:type_transport, entry_date:entry_date, entry_time:entry_time, cubicle:cubicle, user_session:user_session}, function(datos){
+                                                                                            $('#answer').html(datos);
+                                                                                    })
                                                                                 }
 
                                                                             });

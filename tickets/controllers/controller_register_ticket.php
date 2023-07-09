@@ -32,7 +32,7 @@ if($sentence->execute()){
     echo "Registro guardado";
     ?>
     <script>
-        location.href = "dashboard.php";
+        location.href = " tickets/reports/generate_ticket.php";
     </script>
     <?php 
 }else{

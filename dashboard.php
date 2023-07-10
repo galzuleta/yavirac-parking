@@ -89,20 +89,6 @@ include('layout/admin/data_user_session.php');
                                                                                 </div>
                                                                                 <div id="answer_search<?php echo $id_map;?>">
                                                                                 </div>
-                                                                                <br>
-                                                                                <div class="form-group">
-                                                                                    <div class="mb-3 row">
-                                                                                        <label for="" class="col-sm-3 col-form-label">Fecha Ingreso:</label>
-                                                                                        <div class="col-sm-9">
-                                                                                            <?php date_default_timezone_set("America/Guayaquil");
-                                                                                            $date_time = date("Y-m-d h:i:s");
-                                                                                            $day = date('d');
-                                                                                            $month = date('m');
-                                                                                            $year = date('Y');
-                                                                                            ?>
-                                                                                        <input type="date" id="entry_date<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $year."-".$month."-".$day;?>" >
-                                                                                    </div>
-                                                                                </div>
 
                                                                                 <div class="form-group">
                                                                                     <div class="mb-3 row">
@@ -112,11 +98,13 @@ include('layout/admin/data_user_session.php');
                                                                                                 $date_time = date("Y-m-d h:i:s");
                                                                                                 $hour = date('H');
                                                                                                 $minute = date('i');
+                                                                                                $second = date('s');
                                                                                                 ?>
-                                                                                            <input type="time" id="entry_time<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $hour.":".$minute;?>" >
+                                                                                            <input type="time" id="entry_time<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $hour.":".$minute.":".$second;?>" >
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+
                                                                                 <div class="form-group">
                                                                                     <div class="mb-3 row">
                                                                                         <label for="" class="col-sm-3 col-form-label">Cubículo:</label>
@@ -125,6 +113,30 @@ include('layout/admin/data_user_session.php');
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">Fecha Ingreso:</label>
+                                                                                        <?php date_default_timezone_set("America/Guayaquil");
+                                                                                            $date_time = date("Y-m-d h:i:s");
+                                                                                            $day = date('d');
+                                                                                            $month = date('m');
+                                                                                            $year = date('Y');
+                                                                                            ?>
+                                                                                        <input type="date" id="entry_date<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $year."-".$month."-".$day;?>" >
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="">Fecha Salida:</label>
+                                                                                        <?php date_default_timezone_set("America/Guayaquil");
+                                                                                            $date_time = date("Y-m-d h:i:s");
+                                                                                            $day = date('d');
+                                                                                            $month = date('m');
+                                                                                            $year = date('Y');
+                                                                                            ?>
+                                                                                        <input type="date" id="out_date<?php echo $id_map;?>" class="form-control" id="" value="<?php echo $year."-".$month."-".$day;?>" >
+                                                                                    </div>
+                                                                                </div><br>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -142,6 +154,7 @@ include('layout/admin/data_user_session.php');
                                                                                 var type_customer = $('#type_customer<?php echo $id_map;?>').val();
                                                                                 var entry_date = $('#entry_date<?php echo $id_map;?>').val();
                                                                                 var entry_time = $('#entry_time<?php echo $id_map;?>').val();
+                                                                                var out_date = $('#out_date<?php echo $id_map;?>').val();
                                                                                 var cubicle = $('#cubicle<?php echo $id_map;?>').val();
                                                                                 var user_session = "<?php echo $usuario_sesion; ?>";
 
@@ -171,7 +184,7 @@ include('layout/admin/data_user_session.php');
 
                                                                                     var url_2 = 'tickets/controllers/controller_register_ticket.php';
                                                                                     $.get (url_2, {plate:plate, name_customer:name_customer, lastname_customer:lastname_customer, identification:identification, type_customer:type_customer, 
-                                                                                        type_transport:type_transport, entry_date:entry_date, entry_time:entry_time, cubicle:cubicle, user_session:user_session}, function(datos){
+                                                                                        type_transport:type_transport, entry_date:entry_date, entry_time:entry_time, out_date:out_date, cubicle:cubicle, user_session:user_session}, function(datos){
                                                                                             $('#answer').html(datos);
                                                                                     });
 
@@ -217,6 +230,7 @@ include('layout/admin/data_user_session.php');
                                                             $cubicle = $ticket['cubicle'];
                                                             $entry_date = $ticket['entry_date'];
                                                             $entry_time = $ticket['entry_time'];
+                                                            $out_date = $ticket['out_date'];
                                                             $user_session = $ticket['user_session'];
                                                         }
                                                     ?>
@@ -267,20 +281,13 @@ include('layout/admin/data_user_session.php');
 
                                                                     <div class="form-group">
                                                                         <div class="mb-3 row">
-                                                                            <label for="" class="col-sm-3 col-form-label">Fecha Ingreso:</label>
-                                                                            <div class="col-sm-9">
-                                                                            <input type="text" disabled id="entry_date<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_date; ?>" >
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <div class="mb-3 row">
                                                                             <label for="" class="col-sm-3 col-form-label">Hora Ingreso:</label>
                                                                             <div class="col-sm-9">
                                                                                 <input type="text" disabled id="entry_time<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_time; ?>" >
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
                                                                     <div class="form-group">
                                                                         <div class="mb-3 row">
                                                                             <label for="" class="col-sm-3 col-form-label">Cubículo:</label>
@@ -289,24 +296,30 @@ include('layout/admin/data_user_session.php');
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label for="">Fecha Ingreso:</label>
+                                                                            <input type="text" disabled id="entry_date<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_date; ?>" >
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="">Fecha Salida:</label>
+                                                                            <input type="text" disabled id="out_date<?php echo $id_map;?>" class="form-control" value="<?php echo $out_date; ?>" >
+                                                                            </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                            <button type="button" class="btn btn-info">Re-Imprimir</button>
-                                                            <button type="button" class="btn btn-danger">Facturar</button>
+                                                            <a href="tickets/forms/reprint_ticket.php?id=<?php echo $id_ticket;?>" class="btn btn-info">Re-Imprimir</a>
+                                                            <a href="tickets/controllers/controller_void_ticket.php?id=<?php echo $id_ticket;?>&&cubicle=<?php echo $cubicle;?>" class="btn btn-danger">Anular Ticket</a>
+                                                            <button type="button" class="btn btn-success">Facturar</button>
                                                         </div>
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    
-                                                    <script>
-                                                        $('occupied<?php echo $id_map;?>').click(function(){
-
-
-                                                        });
-                                                    </script>
                                                     <p><?php echo $enable_space ?></p>
                                                 </center>
                                             </div>

@@ -17,8 +17,9 @@ foreach($settings as $setting){
     $country = $setting['country'];
 }
 
-//cargar la informacion del ticket
-$query_ticket = $pdo->prepare("SELECT * FROM tickets WHERE enable_ticket = '1' ");
+//cargar la informacion del ticket desde el id
+$id_ticket_get = $_GET['id'];
+$query_ticket = $pdo->prepare("SELECT * FROM tickets WHERE id_ticket='$id_ticket_get' AND enable_ticket = '1' ");
 $query_ticket->execute();
 $tickets = $query_ticket->fetchAll(PDO::FETCH_ASSOC);
 foreach($tickets as $ticket){

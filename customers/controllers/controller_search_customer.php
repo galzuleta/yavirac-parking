@@ -54,9 +54,9 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
         <div class="row">
             <div class="col-md-6">
                 <label for="">Tipo de Transporte <span style="color: red"><b>*</b></label>
-                    <select name="" id="type_transport<?php echo $id_map;?>" class="form-control">
-                        <option value="AUTOMOVIL">AUTOMOVIL</option>
-                        <option value="MOTOCICLETA">MOTOCICLETA</option>
+                <select name="" id="type_transport<?php echo $id_map;?>" class="form-control">
+                    <option value="AUTOMOVIL">AUTOMOVIL</option>
+                    <option value="MOTOCICLETA">MOTOCICLETA</option>
                 </select>
             </div>
 
@@ -67,7 +67,7 @@ $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '
                     <option value="DOCENTE">DOCENTE</option>
                     <option value="VISITANTE">VISITANTE</option>
                 </select>
-                </div>
+            </div>
         </div>
         <?php
     }

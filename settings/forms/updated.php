@@ -62,7 +62,7 @@ include('../../layout/admin/data_user_session.php');
                 <div class="col-md-8">
                   <div class="card card-success">
                     <div class="card-header" style="background-color:info">
-                      <center><h4>Actualización</h4></center>
+                      <center><h4><?php echo $name_parking; ?></h4></center>
                     </div>
                     <div class="card-body" style="display: block" >
                     

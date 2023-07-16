@@ -52,12 +52,12 @@ include('../../layout/admin/data_user_session.php');
         <div class="card mb-3" style="max-width: 950px;">
           <div class="row g-0 align-items-center" >
             <div class="col-md-4">
-              <img src="../../public/img/users.png" class="img-fluid rounded-start">
+              <img src="../../public/img/roles.png" class="img-fluid rounded-start">
             </div>
           <div class="col-md-8">
             <div class="card card-danger">
               <div class="card-header" style="background-color:info">
-                <center><h4>¿Estas seguro de eliminar este registro?</h4></center>
+                <center><h4>¿Estás seguro de eliminar este rol <?php echo $name; ?>?</h4></center>
               </div>
               <div class="card-body" >
                 <div class="form-group">

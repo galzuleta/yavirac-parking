@@ -60,7 +60,7 @@ include('../../layout/admin/data_user_session.php');
           <div class="col-md-8">
             <div class="card card-danger">
               <div class="card-header" style="background-color:info">
-                <center><h4>¿Estas seguro de eliminar este registro?</h4></center>
+                <center><h4>¿Estás seguro de eliminar <br> <?php echo $name. ' ' .$lastname; ?>?</h4></center>
               </div>
               <div class="card-body" >
                 <div class="form-group">

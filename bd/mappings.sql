@@ -1,6 +1,6 @@
 CREATE TABLE mappings(
     id_map                          INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    no_space                        NUMERIC (10,0) NOT NULL,
+    no_space                        NUMERIC (10,0) NOT NULL UNIQUE,
     enable_space                    VARCHAR (255) NOT NULL,
     observation                     VARCHAR (255) NOT NULL,
 

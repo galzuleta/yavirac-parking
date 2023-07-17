@@ -4,7 +4,7 @@ CREATE TABLE settings(
     entity_activity                 VARCHAR (255) NOT NULL,
     address                         VARCHAR (255) NOT NULL,
     zone                            VARCHAR (255) NOT NULL,
-    phone                           INTEGER NOT NULL,
+    phone                           INTEGER NOT NULL UNIQUE,
     city                            VARCHAR (255) NOT NULL,
     country                         VARCHAR (255) NOT NULL,
 

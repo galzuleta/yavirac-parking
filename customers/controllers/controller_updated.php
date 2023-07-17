@@ -9,7 +9,7 @@ $plate = $_GET['plate'];
 $type_customer = $_GET['type_customer'];
 $id_customer = $_GET['id_customer'];
 
-date_default_timezone_set("America/Guayaquil");
+date_default_timezone_set("America/GUAYAQUIL");
 $update_time = date("Y-m-d H:i:s");
 
 $sentence = $pdo->prepare("UPDATE customers SET

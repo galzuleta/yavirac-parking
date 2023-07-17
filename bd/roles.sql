@@ -1,6 +1,6 @@
 CREATE TABLE roles(
     id_role                      INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name                         VARCHAR (255) NOT NULL,
+    name                         VARCHAR (255) NOT NULL UNIQUE,
     
     created_role                 DATETIME        NULL  DEFAULT CURRENT_TIMESTAMP,
     updated_role                 DATETIME        NULL,

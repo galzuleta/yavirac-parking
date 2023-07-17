@@ -1,6 +1,25 @@
 <?php
 include('app/config.php');
 include('layout/admin/data_user_session.php');
+
+//recuperar el id de la informacion
+$query_setting = $pdo->prepare("SELECT * FROM settings WHERE enable_setting = '1'");
+$query_setting->execute();
+$settings = $query_setting->fetchAll(PDO::FETCH_ASSOC);
+foreach($settings as $setting){
+    $id_setting = $setting['id_setting'];
+}
+
+//recuperar el numero de la factura
+$counter_no_invoice = 0;
+$query_invoice = $pdo->prepare("SELECT * FROM invoices WHERE enable_invoice = '1'");
+$query_invoice->execute();
+$invoices = $query_invoice->fetchAll(PDO::FETCH_ASSOC);
+foreach($invoices as $invoice){
+    $counter_no_invoice = $counter_no_invoice + 1;
+}
+$counter_no_invoice = $counter_no_invoice + 1;
+
 ?>
     
     <!DOCTYPE html>
@@ -315,8 +334,40 @@ include('layout/admin/data_user_session.php');
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                             <a href="tickets/forms/reprint_ticket.php?id=<?php echo $id_ticket;?>" class="btn btn-info">Re-Imprimir</a>
                                                             <a href="tickets/controllers/controller_void_ticket.php?id=<?php echo $id_ticket;?>&&cubicle=<?php echo $cubicle;?>" class="btn btn-danger">Anular Ticket</a>
-                                                            <button type="button" class="btn btn-success">Facturar</button>
+                                                            <button type="button" class="btn btn-success" id="invoice<?php echo $id_map;?>">Facturar</button>
+                                                            
+                                                            <?php
+                                                                //Recupera id del cliente
+                                                                $query_data_customer = $pdo->prepare("SELECT * FROM customers WHERE plate = '$plate' AND  enable_customer = '1' ");
+                                                                $query_data_customer->execute();
+                                                                $data_customers = $query_data_customer->fetchAll(PDO::FETCH_ASSOC);
+                                                                foreach($data_customers as $data_customer){
+                                                                    $id_customer_invoice = $data_customer['id_customer'];
+                                                                
+                                                                }
+                                                            ?>
+
+                                                            <script>
+                                                                $('#invoice<?php echo $id_map;?>').click(function(){
+                                                                    var id_setting = "<?php echo $id_setting;?>";
+                                                                    var no_invoice =  "<?php echo $counter_no_invoice?>";
+                                                                    var id_customer =  "<?php echo $id_customer_invoice?>";
+                                                                    var date_issue =  "<?php echo $entry_date?>";
+                                                                    var time_issue =  "<?php echo $entry_time?>";
+                                                                    var date_out = "<?php echo $out_date?>";
+                                                                    var cubicle_invoice = "<?php echo $cubicle?>";
+                                                                    var user_session = "<?php echo $user_session?>";
+
+                                                                    var url_4 = 'invoice/controllers/controller_register_invoice.php';
+                                                                        $.get (url_4, {id_setting:id_setting, no_invoice:no_invoice, id_customer:id_customer, date_issue:date_issue, 
+                                                                            time_issue:time_issue, date_out:date_out, cubicle_invoice:cubicle_invoice, user_session:user_session}, function(datos){
+                                                                        $('#answer_invoice<?php echo $id_map;?>').html(datos);
+                                                                    })
+                                                                    
+                                                                })
+                                                            </script>
                                                         </div>
+                                                        <div id="answer_invoice<?php echo $id_map;?>"></div>
                                                         </div>
                                                     </div>
                                                     </div>

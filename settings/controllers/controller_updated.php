@@ -11,7 +11,7 @@ $city = $_GET['city'];
 $country = $_GET['country'];
 $id_setting = $_GET['id_setting'];
 
-date_default_timezone_set("America/Guayaquil");
+date_default_timezone_set("America/GUAYAQUIL");
 $update_time = date("Y-m-d H:i:s");
 
 $sentence = $pdo->prepare("UPDATE settings SET

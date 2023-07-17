@@ -8,7 +8,7 @@ $email = $_GET['email'];
 $password_user = $_GET['password_user'];
 $id_user = $_GET['id_user'];
 
-date_default_timezone_set("America/Guayaquil");
+date_default_timezone_set("America/GUAYAQUIL");
 $update_time = date("Y-m-d H:i:s");
 
 $sentence = $pdo->prepare("UPDATE users SET

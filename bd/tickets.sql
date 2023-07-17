@@ -3,7 +3,7 @@ CREATE TABLE tickets(
     
     plate                          VARCHAR (255) NOT NULL,
     name_customer                  VARCHAR (255) NOT NULL,
-    lastname_customer                  VARCHAR (255) NOT NULL,
+    lastname_customer              VARCHAR (255) NOT NULL,
     identification                 VARCHAR (255) NOT NULL,
     type_transport                 VARCHAR (255) NOT NULL,
     type_customer                  VARCHAR (255) NOT NULL,

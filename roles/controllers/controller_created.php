@@ -1,5 +1,4 @@
 <?php
-
 include('../../app/config.php');
 
 $name = $_GET['name'];

@@ -46,6 +46,7 @@ include('../layout/admin/data_user_session.php');
           <th><center>Cantidad</center></th>
           <th><center>Detalle</center></th>
           <th><center>Precio</center></th>
+          <th><center>Tipo Transporte</center></th>
           <th><center>Acción</center></th>
 
           <?php
@@ -58,6 +59,7 @@ include('../layout/admin/data_user_session.php');
             $amount = $price['amount'];
             $price_amount = $price['price'];
             $detail = $price['detail'];
+            $type_transport = $price['type_transport'];
             $counter = $counter + 1;
             ?>
               <tr>
@@ -75,6 +77,7 @@ include('../layout/admin/data_user_session.php');
                 <td><center><?php echo $amount;?></center></td>
                 <td><?php echo $detail;?></td>
                 <td><?php echo $price_amount;?></td>
+                <td><?php echo $type_transport;?></td>
                 <td>
                   <center>
                     <a href="forms/delete.php?id=<?php echo $id_price; ?>" class="btn btn-danger">

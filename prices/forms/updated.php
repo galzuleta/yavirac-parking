@@ -69,6 +69,7 @@ include('../../layout/admin/data_user_session.php');
                         $id_price = $data_price['id_price'];
                         $amount = $data_price['amount'];
                         $detail = $data_price['detail'];
+                        $type_transport = $data_price['type_transport'];
                         $price = $data_price['price'];
                     }
                 ?>
@@ -86,20 +87,14 @@ include('../../layout/admin/data_user_session.php');
                             <label for="">Detalle</label>
                             <select name="" id="detail" class="form-control">
                                 <?php
-                                    if($detalle == "HORAS"){ ?>
-                                        <option value="HORAS">HORAS</option>
-                                        <option value="DIAS">DIAS</option>
-                                        <option value="MES">MES</option>
-                                    <?php
-                                    }else if ($detalle == "HORAS"){ ?>
+                                    if($detail == "DIAS"){ ?>
                                       <option value="DIAS">DIAS</option>
                                       <option value="HORAS">HORAS</option>
-                                      <option value="MES">MES</option>
+                                        
                                     <?php
                                     }else{ ?>
-                                        <option value="DIAS">DIAS</option>
-                                        <option value="HORAS">HORAS</option>
-                                        <option value="MES">MES</option>
+                                      <option value="HORAS">HORAS</option>
+                                      <option value="DIAS">DIAS</option>
                                     <?php
                                     }
                                 ?>
@@ -111,6 +106,27 @@ include('../../layout/admin/data_user_session.php');
                         <div class="form-group">
                             <label for="">Precio <span style="color: red"><b>*</b></span></label>
                             <input type="number" step="0.01" value="<?php echo $price;?>" id="price" class="form-control">
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Tipo Transporte <span style="color: red"><b>*</b></span></label>
+                            <select name="" id="type_transport" class="form-control">
+                                <?php
+                                    if($type_transport == "MOTOCICLETA"){ ?>
+                                      <option value="MOTOCICLETA">MOTOCICLETA</option>
+                                      <option value="AUTOMOVIL">AUTOMOVIL</option>
+                                        
+                                    <?php
+                                    }else{ ?>
+                                      <option value="AUTOMOVIL">AUTOMOVIL</option>
+                                      <option value="MOTOCICLETA">MOTOCICLETA</option>
+                                    <?php
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -127,6 +143,7 @@ include('../../layout/admin/data_user_session.php');
                             var amount = $('#amount').val();
                             var detail = $('#detail').val();
                             var price = $('#price').val();
+                            var type_transport = $('#type_transport').val();
                             var id_price = <?php echo $id_price_get;?>;
 
                             if(amount == ""){
@@ -137,7 +154,7 @@ include('../../layout/admin/data_user_session.php');
                                 $('#price').focus();
                             }else {
                                 var url = '../controllers/controller_updated.php';
-                                $.get(url,{amount:amount, detail:detail, price:price,id_price:id_price},function (datos) {
+                                $.get(url,{amount:amount, detail:detail, price:price, type_transport:type_transport ,id_price:id_price},function (datos) {
                                 $('#answer').html(datos);
                                 });
                             }

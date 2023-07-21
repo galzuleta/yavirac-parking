@@ -61,8 +61,7 @@ include('../../layout/admin/data_user_session.php');
                             <label for="name">Detalle<span style="color: red"><b>*</b></label>
                             <select name="" id="detail" class="form-control">
                               <option value="HORAS">HORAS</option>
-                              <option value="DÍA">DÍA</option>
-                              <option value="MES">MES</option>
+                              <option value="DIAS">DIAS</option>
                           </select>
                             </select>
                           </div>
@@ -71,6 +70,17 @@ include('../../layout/admin/data_user_session.php');
                           <div class="form-group">
                             <label for="name">Precio<span style="color: red"><b>*</b></label>
                             <input class="form-control" id="price" type="number" step="0.01">
+                          </div>
+                        </div>
+                      </div><br>
+                      <div class="row justify-content-center align-items-center">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="name">Tipo Transporte<span style="color: red"><b>*</b></label>
+                            <select name="" id="type_transport" class="form-control">
+                            <option value="AUTOMOVIL">AUTOMOVIL</option>
+                            <option value="MOTOCICLETA">MOTOCICLETA</option>
+                        </select>
                           </div>
                         </div>
                         
@@ -104,6 +114,7 @@ include('../../layout/admin/data_user_session.php');
     var amount = $('#amount').val();
     var detail = $('#detail').val();
     var price = $('#price').val();
+    var type_transport = $('#type_transport').val();
 
     if(amount == ""){
       alert('Debe de llenar el campo Cantidad');
@@ -115,7 +126,7 @@ include('../../layout/admin/data_user_session.php');
     }
     else{
       var url = '../controllers/controller_created.php';
-        $.get(url,{amount:amount, detail:detail, price:price},function (datos) {
+        $.get(url,{amount:amount, detail:detail, price:price, type_transport:type_transport},function (datos) {
           $('#answer').html(datos);
       } );
     }

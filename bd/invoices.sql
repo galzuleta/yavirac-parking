@@ -12,10 +12,12 @@ CREATE TABLE invoices(
     time_used                       TIME NOT NULL,
     cubicle                         VARCHAR (255) NOT NULL,
     detail                          VARCHAR (255) NOT NULL,
+    amount                          NUMBER (10,0) NOT NULL,
     price                           DECIMAL (10,2) NOT NULL,
     total                           DECIMAL (10,2)  NOT NULL,
     amount_total                    DECIMAL (10,2) NOT NULL,
-    amount_literal                 VARCHAR (255) NOT NULL,
+    amount_literal                  VARCHAR (255) NOT NULL,
+    type_transport                  VARCHAR (255) NOT NULL,
     user_session                    VARCHAR (255) NOT NULL,
     qr                              VARCHAR (255)  NULL,
     

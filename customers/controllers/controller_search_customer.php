@@ -13,8 +13,8 @@ $type_transport = '';
 $type_customer = '';
 
 $query_search = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '1' and plate = '$plate'");
-    $query_search->execute();
-    $searchs = $query_search->fetchAll(PDO::FETCH_ASSOC);
+$query_search->execute();
+$searchs = $query_search->fetchAll(PDO::FETCH_ASSOC);
         foreach($searchs as $search){
             $id_customer = $search['id_customer'];
             $identification = $search['identification'];

@@ -247,6 +247,7 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                             $lastname_customer = $ticket['lastname_customer'];
                                                             $identification = $ticket['identification'];
                                                             $cubicle = $ticket['cubicle'];
+                                                            $type_transport = $ticket['type_transport'];
                                                             $entry_date = $ticket['entry_date'];
                                                             $entry_time = $ticket['entry_time'];
                                                             $out_date = $ticket['out_date'];
@@ -280,41 +281,29 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                                     </div>
                                                                     </div>
 
-                                                                    <div class="form-group">
-                                                                        <div class="mb-3 row">
-                                                                            <label for="" class="col-sm-3 col-form-label">Nombre:</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" disabled style="text-transform:uppercase" class="form-control" id="name_customer<?php echo $id_map;?>" value="<?php echo $name_customer;?>"  >
-                                                                            </div>        
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label for="">Nombre::</label>
+                                                                            <input type="text" disabled style="text-transform:uppercase" class="form-control" id="name_customer<?php echo $id_map;?>" value="<?php echo $name_customer;?>"  >
                                                                         </div>
-                                                                    </div>
 
-                                                                    <div class="form-group">
-                                                                        <div class="mb-3 row">
-                                                                            <label for="" class="col-sm-3 col-form-label">Apellido:</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" disabled style="text-transform:uppercase" class="form-control" id="lastname_customer<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
-                                                                            </div>      
+                                                                        <div class="col-md-6">
+                                                                            <label for="">Apellido:</label>
+                                                                            <input type="text" disabled style="text-transform:uppercase" class="form-control" id="lastname_customer<?php echo $id_map;?>" value="<?php echo $lastname_customer;?>" >
                                                                         </div>
-                                                                    </div>
+                                                                    </div> <br>
 
-                                                                    <div class="form-group">
-                                                                        <div class="mb-3 row">
-                                                                            <label for="" class="col-sm-3 col-form-label">Hora Ingreso:</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" disabled id="entry_time<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_time; ?>" >
-                                                                            </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label for="">Cubículo:</label>
+                                                                            <input disabled type="text" class="form-control" id="cubicle<?php echo $id_map;?>" value="<?php echo $no_space;?>" >
                                                                         </div>
-                                                                    </div>
 
-                                                                    <div class="form-group">
-                                                                        <div class="mb-3 row">
-                                                                            <label for="" class="col-sm-3 col-form-label">Cubículo:</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input disabled type="text" class="form-control" id="cubicle<?php echo $id_map;?>" value="<?php echo $no_space;?>" >
-                                                                            </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="">Tipo Transporte:</label>
+                                                                            <input disabled type="text" class="form-control" id="type_transport<?php echo $id_map;?>" value="<?php echo $type_transport;?>" >
                                                                         </div>
-                                                                    </div>
+                                                                    </div> <br>
 
                                                                     <div class="row">
                                                                         <div class="col-md-6">
@@ -325,7 +314,16 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                                         <div class="col-md-6">
                                                                             <label for="">Fecha Salida:</label>
                                                                             <input type="text" disabled id="out_date<?php echo $id_map;?>" class="form-control" value="<?php echo $out_date; ?>" >
+                                                                        </div>
+                                                                    </div><br>
+
+                                                                    <div class="form-group">
+                                                                        <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Hora Ingreso:</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input type="text" disabled id="entry_time<?php echo $id_map;?>" class="form-control" value="<?php echo $entry_time; ?>" >
                                                                             </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -355,12 +353,13 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                                     var date_issue =  "<?php echo $entry_date?>";
                                                                     var time_issue =  "<?php echo $entry_time?>";
                                                                     var date_out = "<?php echo $out_date?>";
+                                                                    var type_transport = "<?php echo $type_transport?>";
                                                                     var cubicle_invoice = "<?php echo $cubicle?>";
                                                                     var user_session = "<?php echo $user_session?>";
 
                                                                     var url_4 = 'invoice/controllers/controller_register_invoice.php';
                                                                         $.get (url_4, {id_setting:id_setting, no_invoice:no_invoice, id_customer:id_customer, date_issue:date_issue, 
-                                                                            time_issue:time_issue, date_out:date_out, cubicle_invoice:cubicle_invoice, user_session:user_session}, function(datos){
+                                                                            time_issue:time_issue, type_transport:type_transport , date_out:date_out, cubicle_invoice:cubicle_invoice, user_session:user_session}, function(datos){
                                                                         $('#answer_invoice<?php echo $id_map;?>').html(datos);
                                                                     })
                                                                     

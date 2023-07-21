@@ -41,7 +41,7 @@ include('../../layout/admin/data_user_session.php');
             <div class="card mb-3" style="max-width: 950px;">
               <div class="row g-0 align-items-center">
                 <div class="col-md-4">
-                  <img src="../../public/img/roles.png" class="img-fluid rounded-start">
+                  <img src="../../public/img/tarifas.png"  style="max-width: 150px;"  class="img-fluid rounded-start">
                 </div>
                 <div class="col-md-8">
                   <div class="card card-info">
@@ -49,36 +49,43 @@ include('../../layout/admin/data_user_session.php');
                       <center><h4>Formulario</h4></center>
                     </div>
                     <div class="card-body " >
-                      <div class="form-group">
-                        <div class="col-md-9">
-                          <label for="name">Cantidad<span style="color: red"><b>*</b></label>
-                          <input class="form-control" id="amount" type="text">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="name">Cantidad<span style="color: red"><b>*</b></label>
+                            <input class="form-control" id="amount" type="text">
+                          </div>
                         </div>
-
-                        <div class="col-md-9">
-                          <label for="name">Detalle<span style="color: red"><b>*</b></label>
-                          <select name="" id="detail" class="form-control">
-                            <option value="ESTUDIANTE">HORAS</option>
-                            <option value="DOCENTE">DÍA</option>
-                            <option value="VISITANTE">MES</option>
-                         </select>
-                         
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="name">Detalle<span style="color: red"><b>*</b></label>
+                            <select name="" id="detail" class="form-control">
+                              <option value="HORAS">HORAS</option>
+                              <option value="DÍA">DÍA</option>
+                              <option value="MES">MES</option>
+                          </select>
+                            </select>
+                          </div>
                         </div>
-
-                        <div class="col-md-9">
-                          <label for="name">Precio<span style="color: red"><b>*</b></label>
-                          <input class="form-control" id="price" type="number" step="0.01">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="name">Precio<span style="color: red"><b>*</b></label>
+                            <input class="form-control" id="price" type="number" step="0.01">
+                          </div>
                         </div>
-
+                        
+                    </div>
+                    <hr> 
+                    <div class="row justify-content-center">
+                      <div class="col-md-12">
+                        <button type="button"  class="btn btn-info" id="save" >Guardar</button>
+                        <a href="<?php echo $URL;?>../prices/" class="btn btn-default">Cancelar</a>
                       </div>
-                      <div class="form-group">
-                        <button type="button"  class="btn btn-primary" id="save" >Guardar</button>
-                          <a href="<?php echo $URL;?>../prices/" class="btn btn-danger">Cancelar</a>
-                        </div>
-                          <div id="answer"></div>
-                        </div>
-                      </div>
+                      <div id="answer"></div>
+                    </div>
                   </div>
+                </div>
+                </div>
               </div>
             </div>
         </div>

@@ -87,49 +87,22 @@ include('../../layout/admin/data_user_session.php');
                     <input class="form-control" id="lastname" type="text" value="<?php echo $lastname;?>" >
                   </div>
                 </div><br>
-
                 <div class="row">
                   <div class="col-md-6">
-                    <label for="">Tipo de Transporte:</label>
-                    <select name="" id="type_transport<?php echo $id_map;?>" class="form-control">
-                      <?php 
-                        if($type_transport == "MOTOCICLETA"){ ?>
-                          <option value="MOTOCICLETA">MOTOCICLETA</option>
-                          <option value="AUTOMOVIL">AUTOMOVIL</option>
-                        <?php
-                        }else{ ?>
-                          <option value="AUTOMOVIL">AUTOMOVIL</option>
-                          <option value="MOTOCICLETA">MOTOCICLETA</option>
-                        <?php
-                        }
-                      ?>
-                    </select>
+                      <label for="">Tipo de Transporte:</label>
+                      <select name="" id="type_transport<?php echo $id_map; ?>" class="form-control" disabled>
+                          <option value="<?php echo $type_transport;?>"><?php echo $type_transport;?></option>
+                      </select>
                   </div>
 
                   <div class="col-md-6">
-                    <label for="">Tipo de Cliente:</label>
-                    <select name="" id="type_customer<?php echo $id_map;?>" class="form-control">
-                    <?php 
-                        if($type_customer == "ESTUDIANTE"){ ?>
-                          <option value="ESTUDIANTE">ESTUDIANTE</option>
-                          <option value="DOCENTE">DOCENTE</option>
-                          <option value="VISITANTE">VISITANTE</option>
-                        <?php
-                        }else if ($type_customer == "DOCENTE"){ ?>
-                          <option value="DOCENTE">DOCENTE</option>
-                          <option value="ESTUDIANTE">ESTUDIANTE</option>
-                          <option value="VISITANTE">VISITANTE</option>
-                        <?php
-                        }else{ ?>
-                          <option value="VISITANTE">VISITANTE</option>
-                          <option value="DOCENTE">DOCENTE</option>
-                          <option value="ESTUDIANTE">ESTUDIANTE</option>
-                        <?php
-                        }
-                      ?>
-                    </select>
+                      <label for="">Tipo de Cliente:</label>
+                      <select name="" id="type_customer<?php echo $id_map; ?>" class="form-control" disabled>
+                      <option value="<?php echo $type_customer;?>"><?php echo $type_customer;?></option>
+                      </select>
                   </div>
-                </div><br>
+              </div>
+              </div><br>
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-success" id="updated" >Actualizar</button>

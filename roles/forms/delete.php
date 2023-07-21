@@ -52,7 +52,7 @@ include('../../layout/admin/data_user_session.php');
         <div class="card mb-3" style="max-width: 950px;">
           <div class="row g-0 align-items-center" >
             <div class="col-md-4">
-              <img src="../../public/img/roles.png" class="img-fluid rounded-start">
+              <img src="../../public/img/roles.png" style="max-width: 200px;" class="img-fluid rounded-start">
             </div>
           <div class="col-md-8">
             <div class="card card-danger">

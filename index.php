@@ -52,7 +52,7 @@ include('layout/admin/data_user_session.php');
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-default" style="background-color:rgb(255, 112, 67);" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Ingresar
         </button>
       </form>
@@ -145,10 +145,11 @@ include('layout/admin/data_user_session.php');
         </div><br>
         <div id="respuesta"></div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="ingresar" >Ingresar</button>
+      <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-default"  style="background-color:rgb(255, 112, 67);" id="ingresar" >Ingresar</button>
+            <button type="button" class="btn btn-default" style="background-color: rgb(33, 33, 33); color: white;" data-bs-dismiss="modal">Cancelar</button>
       </div>
+   
     </div>
   </div>
 </div>

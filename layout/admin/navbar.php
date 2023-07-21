@@ -41,7 +41,7 @@
   <!-- /.navbar -->
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-info elevation-4">
+<aside class="main-sidebar sidebar-dark-info elevation-4" >
     <!-- Brand Logo -->
     <a href="<?php echo $URL;?>/dashboard.php" class="brand-link">
       <img src="<?php echo $URL;?>/public/img/yavirac1.png" alt="Yavirac Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

@@ -39,7 +39,7 @@ include('../../layout/admin/data_user_session.php');
             <div class="card mb-3" style="max-width: 950px;">
               <div class="row g-0 align-items-center">
                 <div class="col-md-4">
-                 <center> <img src="../../public/img/yavirac-informacion.png" class="img-fluid rounded-start"></center>
+                 <center> <img src="../../public/img/yavirac.jpg" style="max-width: 300px;"  class="img-fluid rounded-start"></center>
                 </div>
                 <div class="col-md-8">
                   <div class="card card-info">

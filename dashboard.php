@@ -354,12 +354,12 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                                     var time_issue =  "<?php echo $entry_time?>";
                                                                     var date_out = "<?php echo $out_date?>";
                                                                     var type_transport = "<?php echo $type_transport?>";
-                                                                    var cubicle_invoice = "<?php echo $cubicle?>";
+                                                                    var cubicle = "<?php echo $cubicle?>";
                                                                     var user_session = "<?php echo $user_session?>";
 
                                                                     var url_4 = 'invoice/controllers/controller_register_invoice.php';
                                                                         $.get (url_4, {id_setting:id_setting, no_invoice:no_invoice, id_customer:id_customer, date_issue:date_issue, 
-                                                                            time_issue:time_issue, type_transport:type_transport , date_out:date_out, cubicle_invoice:cubicle_invoice, user_session:user_session}, function(datos){
+                                                                            time_issue:time_issue, type_transport:type_transport , date_out:date_out, cubicle:cubicle, user_session:user_session}, function(datos){
                                                                         $('#answer_invoice<?php echo $id_map;?>').html(datos);
                                                                     })
                                                                     

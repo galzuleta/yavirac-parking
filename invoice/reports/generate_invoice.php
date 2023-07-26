@@ -36,7 +36,7 @@ foreach($tickets as $ticket){
 
 
 // create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,160), true, 'UTF-8', false);
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,140), true, 'UTF-8', false);
 
 // set document information
 $pdf->setCreator(PDF_CREATOR);
@@ -104,8 +104,8 @@ $html = '
                 </tr>
                 <tr>
                     <td>Servicio de parqueo</td>
-                    <td style="text-align:center"> </td>
-                    <td style="text-align:center"> </td>
+                    <td style="text-align:center">$ </td>
+                    <td style="text-align:center">$ </td>
                 </tr>
             </table>
             <p style="text-align:right">
@@ -114,7 +114,7 @@ $html = '
             <p><b>Son:</b> </p>
 
             --------------------------------------------------------------------------------<br>
-            <b>USUARIO:</b> '.$user_session.' <br>
+            <b>USUARIO:</b> '.$user_session.' <br><br><br><br><br><br><br><br><br>
             <p style="text-align:center"><b>GRACIAS POR SU PREFERENCIA</b></p>
         </div>
     </p>
@@ -124,6 +124,19 @@ $html = '
 
 // output the HTML content
 $pdf->writeHTML($html, true, false, true, false, '');
+
+$style = array(
+    'vpadding' => 'auto',
+    'hpadding' => 'auto',
+    'fgcolor' => array(0,0,0),
+    'bgcolor' => false, //array(255,255,255)
+    'module_width' => 1, // width of a single module in points
+    'module_height' => 1 // height of a single module in points
+);
+
+$QR = 'www.yavi-parking.com';
+$pdf->write2DBarcode( $QR, 'QRCODE,M', 22, 98, 35, 35, $style, 'N');
+
 
 
 //Close and output PDF document

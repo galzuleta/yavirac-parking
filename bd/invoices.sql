@@ -4,7 +4,7 @@ CREATE TABLE invoices(
     id_customer                     VARCHAR (255) NOT NULL,
     no_invoice                      VARCHAR (255) NOT NULL,
 
-    date_invoice                    TIMESTAMP NOT NULL,
+    date_invoice                    VARCHAR (255) NOT NULL,
     date_issue                      DATE NOT NULL,
     time_issue                      TIME NOT NULL,
     date_out                        DATE NOT NULL,

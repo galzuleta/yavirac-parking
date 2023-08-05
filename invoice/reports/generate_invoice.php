@@ -18,25 +18,49 @@ foreach($settings as $setting){
 }
 
 //cargar la informacion del ticket
-$query_ticket = $pdo->prepare("SELECT * FROM tickets WHERE enable_ticket = '1' ");
-$query_ticket->execute();
-$tickets = $query_ticket->fetchAll(PDO::FETCH_ASSOC);
-foreach($tickets as $ticket){
-    $id_ticket = $ticket['id_ticket'];
-    $plate = $ticket['plate'];
-    $name_customer = $ticket['name_customer'];
-    $lastname_customer = $ticket['lastname_customer'];
-    $identification = $ticket['identification'];
-    $cubicle = $ticket['cubicle'];
-    $entry_date = $ticket['entry_date'];
-    $entry_time = $ticket['entry_time'];
-    $out_date = $ticket['out_date'];
-    $user_session = $ticket['user_session'];
+$query_customer = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '1'");
+$query_customer->execute();
+$customers = $query_customer->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($customers as $customer) {
+    $id_customer = $customer['id_customer'];
+    $name = $customer['name'];
+    $lastname = $customer['lastname'];
+    $identification = $customer['identification'];
+}
+
+//cargar datos de la factura
+$query_invoice = $pdo->prepare("SELECT * FROM invoices WHERE enable_invoice = '1'");
+$query_invoice->execute();
+$invoices = $query_invoice->fetchAll(PDO::FETCH_ASSOC);
+foreach($invoices as $invoice){
+    $id_invoice = $invoice['id_invoice'];
+    $id_setting = $invoice['id_setting'];
+    $id_customer = $invoice['id_customer'];
+
+    $no_invoice = $invoice['no_invoice'];
+
+    $date_invoice = $invoice['date_invoice'];
+    $date_issue = $invoice['date_issue'];
+    $time_issue = $invoice['time_issue'];
+    $date_out = $invoice['date_out'];
+    $time_out = $invoice['time_out'];
+    $time_used = $invoice['time_used'];
+    $cubicle = $invoice['cubicle'];
+    $detail = $invoice['detail'];
+    $price = $invoice['price'];
+    $total = $invoice['total'];
+    $amount_total = $invoice['amount_total'];
+    $amount_literal = $invoice['amount_literal'];
+    $type_transport = $invoice['type_transport'];
+    $user_session = $invoice['user_session'];
+    $qr = $invoice['qr'];
+
 }
 
 
 // create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,140), true, 'UTF-8', false);
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,180), true, 'UTF-8', false);
 
 // set document information
 $pdf->setCreator(PDF_CREATOR);
@@ -84,37 +108,37 @@ $html = '
         <b>TELEFONO:</b> '.$phone.'  <br>
         '.$city.' - '.$country.' <br>
         --------------------------------------------------------------------------------
-        <b>FACTURA Nro. 00000</b> <br>
+        <b>FACTURA Nro.</b>'.$no_invoice.' <br>
         --------------------------------------------------------------------------------
         <div style="text-align: left">
             <b>INFORMACIÓN</b><br>
-            <b>Señor/Srta:</b> '.$name_customer.' '.$lastname_customer.' <br>
+            <b>Señor/Srta:</b> '.$name.' '.$lastname.' <br>
             <b>Cédula:</b> '.$identification.' <br>
-            <b>Fecha de emisión:</b>  <br>
+            <b>Fecha de emisión:</b> '.$date_invoice.'<br>
             --------------------------------------------------------------------------------<br>
-            <b>De:</b>  <b> Hora:</b>  <br>
-            <b>A:</b>  <b>  Hora:</b>  <br>
-            <b>Tiempo:</b>  <b>   <br><br>
+            <b>De:</b> '.$date_issue.'<b> Hora:</b> '.$time_issue.'<br>
+            <b>A:</b> '.$date_out.'<b>  Hora:</b> '.$time_out.'<br>
+            <b>Tiempo:</b><b>'.$time_used.'<br><br>
 
-            <table border="1" cellpadding="2">
+            <table border="1" cellpadding="3">
                 <tr>
-                    <td style="text-align:center"><b>Detalle</b></td>
-                    <td style="text-align:center"><b>Precio</b></td>
-                    <td style="text-align:center"><b>Total</b></td>
+                    <td style="text-align:center" width="125px"><b>Detalle</b></td>
+                    <td style="text-align:center" width="55px"><b>Precio</b></td>
+                    <td style="text-align:center" width="55px"><b>Total</b></td>
                 </tr>
                 <tr>
-                    <td>Servicio de parqueo</td>
-                    <td style="text-align:center">$ </td>
-                    <td style="text-align:center">$ </td>
+                    <td>'.$detail.'</td>
+                    <td style="text-align:center">$ '.$price.' </td>
+                    <td style="text-align:center">$ '.$total.' </td>
                 </tr>
             </table>
             <p style="text-align:right">
-                <b>Monto Total:</b>
+                <b>Monto Total:</b> '.$amount_total.'
             </p>
-            <p><b>Son:</b> </p>
+            <p><b>Son:</b> '.$amount_literal.' </p>
 
             --------------------------------------------------------------------------------<br>
-            <b>USUARIO:</b> '.$user_session.' <br><br><br><br><br><br><br><br><br>
+            <b>USUARIO:</b> '.$user_session.' <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <p style="text-align:center"><b>GRACIAS POR SU PREFERENCIA</b></p>
         </div>
     </p>
@@ -134,8 +158,7 @@ $style = array(
     'module_height' => 1 // height of a single module in points
 );
 
-$QR = 'www.yavi-parking.com';
-$pdf->write2DBarcode( $QR, 'QRCODE,M', 22, 98, 35, 35, $style, 'N');
+$pdf->write2DBarcode( $qr, 'QRCODE,M', 8, 103, 80, 80, $style, 'N');
 
 
 

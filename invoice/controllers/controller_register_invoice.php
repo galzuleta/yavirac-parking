@@ -137,20 +137,21 @@ $total = ($price);
 $amount_total = ($total);
 $amount_literal = numtoletras($amount_total);
 $user_session = $_GET['user_session'];
-$qr = 'Emisión de Factura por el sistema YAVI-PARKING <br><br>
+$qr = 'Emisión de Factura por el sistema YAVI-PARKING
        El/La cliente ' .$name. " ".$lastname.' ('.$type_customer.') con C.I. ' .$identification. ' su tipo de vehículo '.$type_transport.' 
-       y número de placa '.$plate.' ingreso el día ' .$date_issue. ' y sale el día ' .$date_out. '  <br><br>
+       y número de placa '.$plate.' ingreso el día ' .$date_issue. ' a las '.$time_issue.' y sale el día ' .$date_out. ' 
        Emitido por el Instituto Superior Tecnológico de Turísmo y Patrimonio "YAVIRAC" 
 ';
 
 
 $sentence = $pdo->prepare("INSERT INTO invoices 
-(id_setting, no_invoice, id_customer, date_invoice, date_issue, time_issue, date_out, time_out, time_used, cubicle, detail, price, total, amount_total, amount_literal, user_session, qr) 
-VALUES (:id_setting, :no_invoice, :id_customer, :date_invoice, :date_issue, :time_issue, :date_out, :time_out, :time_used, :cubicle, :detail, :price, :total, :amount_total, :amount_literal, :user_session, :qr)");
+(id_setting, no_invoice, id_customer, type_transport, date_invoice, date_issue, time_issue, date_out, time_out, time_used, cubicle, detail, price, total, amount_total, amount_literal, user_session, qr) 
+VALUES (:id_setting, :no_invoice, :id_customer, :type_transport, :date_invoice, :date_issue, :time_issue, :date_out, :time_out, :time_used, :cubicle, :detail, :price, :total, :amount_total, :amount_literal, :user_session, :qr)");
 
     $sentence->bindParam(':id_setting', $id_setting);
     $sentence->bindParam(':no_invoice', $no_invoice);
     $sentence->bindParam(':id_customer', $id_customer);
+    $sentence->bindParam(':type_transport', $type_transport);
     $sentence->bindParam(':date_invoice', $date_invoice);
     $sentence->bindParam(':date_issue', $date_issue);
     $sentence->bindParam(':time_issue', $time_issue);
@@ -168,7 +169,10 @@ VALUES (:id_setting, :no_invoice, :id_customer, :date_invoice, :date_issue, :tim
 
 
     if ($sentence->execute()) {
-        echo 'success';
+        echo 'Se genero exitosamente';
+        ?>
+        <script>location.href = "invoice/reports/generate_invoice.php";</script>
+        <?php
     } else {
         echo 'Error al registrar en la base de datos';
     }

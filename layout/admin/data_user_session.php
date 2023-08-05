@@ -16,7 +16,7 @@ if(isset($_SESSION['usuario_sesion'])) {
 
     }
 } else {
-   //echo "para ingresar debe iniciar sesion";
+   // header('Location: '.$URL.'/index.php');
 }
 
 ?>

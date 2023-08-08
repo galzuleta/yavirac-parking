@@ -17,47 +17,50 @@ foreach($settings as $setting){
     $country = $setting['country'];
 }
 
-//cargar la informacion del ticket
+//sacar informacion del ticket
 $query_customer = $pdo->prepare("SELECT * FROM customers WHERE enable_customer = '1'");
 $query_customer->execute();
 $customers = $query_customer->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($customers as $customer) {
-    $id_customer = $customer['id_customer'];
-    $name = $customer['name'];
-    $lastname = $customer['lastname'];
-    $identification = $customer['identification'];
-}
-
-//cargar datos de la factura
 $query_invoice = $pdo->prepare("SELECT * FROM invoices WHERE enable_invoice = '1'");
 $query_invoice->execute();
 $invoices = $query_invoice->fetchAll(PDO::FETCH_ASSOC);
-foreach($invoices as $invoice){
-    $id_invoice = $invoice['id_invoice'];
-    $id_setting = $invoice['id_setting'];
-    $id_customer = $invoice['id_customer'];
 
-    $no_invoice = $invoice['no_invoice'];
+foreach ($invoices as $invoice) {
+    $id_customer_invoice = $invoice['id_customer'];
 
-    $date_invoice = $invoice['date_invoice'];
-    $date_issue = $invoice['date_issue'];
-    $time_issue = $invoice['time_issue'];
-    $date_out = $invoice['date_out'];
-    $time_out = $invoice['time_out'];
-    $time_used = $invoice['time_used'];
-    $cubicle = $invoice['cubicle'];
-    $detail = $invoice['detail'];
-    $price = $invoice['price'];
-    $total = $invoice['total'];
-    $amount_total = $invoice['amount_total'];
-    $amount_literal = $invoice['amount_literal'];
-    $type_transport = $invoice['type_transport'];
-    $user_session = $invoice['user_session'];
-    $qr = $invoice['qr'];
+    foreach ($customers as $customer) {
+        $id_customer = $customer['id_customer'];
 
+        if ($id_customer_invoice === $id_customer) {
+            $name = $customer['name'];
+            $lastname = $customer['lastname'];
+            $identification = $customer['identification'];
+
+            $id_invoice = $invoice['id_invoice'];
+            $id_setting = $invoice['id_setting'];
+            $no_invoice = $invoice['no_invoice'];
+
+            $date_invoice = $invoice['date_invoice'];
+            $date_issue = $invoice['date_issue'];
+            $time_issue = $invoice['time_issue'];
+            $date_out = $invoice['date_out'];
+            $time_out = $invoice['time_out'];
+            $time_used = $invoice['time_used'];
+            $cubicle = $invoice['cubicle'];
+            $detail = $invoice['detail'];
+            $price = $invoice['price'];
+            $total = $invoice['total'];
+            $amount_total = $invoice['amount_total'];
+            $amount_literal = $invoice['amount_literal'];
+            $type_transport = $invoice['type_transport'];
+            $user_session = $invoice['user_session'];
+            $qr = $invoice['qr'];
+
+
+        }
+    }
 }
-
 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,180), true, 'UTF-8', false);
@@ -112,7 +115,7 @@ $html = '
         --------------------------------------------------------------------------------
         <div style="text-align: left">
             <b>INFORMACIÓN</b><br>
-            <b>Señor/Srta:</b> '.$name.' '.$lastname.' <br>
+            <b>Señor/Srta:</b> '.$id_customer_invoice.' '.$name.' '.$lastname.' <br>
             <b>Cédula:</b> '.$identification.' <br>
             <b>Fecha de emisión:</b> '.$date_invoice.'<br>
             --------------------------------------------------------------------------------<br>

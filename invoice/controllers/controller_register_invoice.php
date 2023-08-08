@@ -38,14 +38,15 @@ $time_issue = isset($_GET['time_issue']) ? $_GET['time_issue'] : null;
 $date_out = isset($_GET['date_out']) ? $_GET['date_out'] : null;
 $time_out = date('H:i');
 
-//calcula el tiempo de horas parqueo
-$c_hour_issue = strtotime($time_issue);
-$c_hour_out = strtotime($time_out);
-$diferent_hour = ($c_hour_out - $c_hour_issue) / 3600;
-$hour_calculator = ((int) $diferent_hour);
-$diferent_minutes = ($c_hour_out - $c_hour_issue) / 60;
-$calculator = $hour_calculator * 60;
-$minute_calculator = ((int) $diferent_minutes - $calculator);
+/// Calcula diferencia entre el tiempo de entrada y salida
+$date_time_issue = $date_issue." ".$time_issue;
+$date_time_out = $date_out." ".$time_out;
+
+$date_time_issue = new DateTime($date_time_issue);
+$date_time_out = new DateTime($date_time_out);
+$diff = $date_time_issue->diff($date_time_out);
+
+$diff->days."dias con".$diff->h."horas";
 
 
 //calcula los dias en el parquep
@@ -78,8 +79,7 @@ foreach ($customers as $customer) {
 
 
 // Consulta en la tabla precios en horas
-$query_price_hour = $pdo->prepare("SELECT * FROM prices WHERE amount = :hour_calculator AND detail = 'HORAS' AND enable_price = '1' ");
-$query_price_hour->bindParam(':hour_calculator', $hour_calculator, PDO::PARAM_INT); 
+$query_price_hour = $pdo->prepare("SELECT * FROM prices WHERE amount = '$diff->h' AND detail = 'HORAS' AND enable_price = '1' ");
 $query_price_hour->execute();
 $prices = $query_price_hour->fetchAll(PDO::FETCH_ASSOC);
 
@@ -170,11 +170,38 @@ VALUES (:id_setting, :no_invoice, :id_customer, :type_transport, :date_invoice, 
 
     if ($sentence->execute()) {
         echo 'Se genero exitosamente';
+
+        $enable_space_mapping = "LIBRE";
+
+        date_default_timezone_set("America/GUAYAQUIL");
+        $update_time = date("Y-m-d H:i:s");
+
+        $sentence = $pdo->prepare("UPDATE mappings SET
+        enable_space=:enable_space, updated_mapping=:updated_mapping WHERE no_space=:no_space");
+
+        $sentence->bindParam(':enable_space', $enable_space_mapping);
+        $sentence->bindParam(':updated_mapping', $update_time);
+        $sentence->bindParam(':no_space', $cubicle);
+        $sentence->execute();
+
+
+        $ticket_status_invoice = "FACTURADO";
+        date_default_timezone_set("America/GUAYAQUIL");
+        $update_time = date("Y-m-d H:i:s");
+
+        $sentence_ticket = $pdo->prepare("UPDATE tickets SET
+        ticket_status=:ticket_status, updated_ticket=:updated_ticket WHERE cubicle=:cubicle");
+
+        $sentence_ticket->bindParam(':ticket_status', $ticket_status_invoice);
+        $sentence_ticket->bindParam(':updated_ticket', $update_time);
+        $sentence_ticket->bindParam(':cubicle', $cubicle);
+        $sentence_ticket->execute();
+
         ?>
         <script>location.href = "invoice/reports/generate_invoice.php";</script>
         <?php
     } else {
         echo 'Error al registrar en la base de datos';
     }
-                                                     
+                                                 
 ?>

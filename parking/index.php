@@ -41,12 +41,41 @@ include('../layout/admin/data_user_session.php');
       <div class="card card-outline card-info">
 
           <div class="card-body" style="display: block;">
-            <table class="table table-bordered table-sm table-striped">
+            <script>
+                  $(document).ready(function() {
+                    $('#table_id').DataTable( {
+                      "pageLength": 10,
+                      "language": {
+                      "emptyTable": "No hay información",
+                      "info": " Total de Espacios: _TOTAL_ ",
+                      "infoEmpty": "Mostrando 0  Espacios ",
+                      "infoFiltered": "(Filtrado de _MAX_  Espacios)",
+                      "infoPostFix": "",
+                      "thousands": ",",
+                      "lengthMenu": "Mostrar _MENU_ Espacios",
+                      "loadingRecords": "Cargando...",
+                      "processing": "Procesando...",
+                      "search": "Buscar:", 
+                      "zeroRecords": "Sin resultados encontrados ",
+                      "paginate": {
+                          "first": "Primero",
+                          "last": "Ultimo",
+                          "next": "Siguiente",
+                          "previous": "Anterior"
+                      }
+                    }
+                  });
+                } );
+              </script>
+
+            <table id="table_id" class="table table-bordered table-sm table-striped">
+            <thead>
               <th><center>Nro Espacio</center></th>
               <th><center>Estado</center></th>
               <th><center>Observaciones</center></th>
               <th><center>Acción</center></th>
-
+            </thead>
+            <tbody>
               <?php
               $counter = 0;
               $query_mapping = $pdo->prepare("SELECT * FROM mappings WHERE enable_mapping = '1' ORDER BY id_map DESC");
@@ -77,6 +106,7 @@ include('../layout/admin/data_user_session.php');
                 <?php
               }
               ?>
+            <tbody>
             </table>
           </div>
       </div>

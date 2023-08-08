@@ -41,11 +41,40 @@ include('../layout/admin/data_user_session.php');
       <div class="card card-outline card-info">
 
           <div class="card-body" style="display: block;">
-            <table class="table table-bordered table-sm table-striped">
+            <script>
+                $(document).ready(function() {
+                  $('#table_id').DataTable( {
+                    "pageLength": 10,
+                    "language": {
+                    "emptyTable": "No hay información",
+                    "info": " Total de Roles: _TOTAL_ ",
+                    "infoEmpty": "Mostrando 0  Roles ",
+                    "infoFiltered": "(Filtrado de _MAX_  Roles)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Roles",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:", 
+                    "zeroRecords": "Sin resultados encontrados ",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                  }
+                });
+              } );
+            </script>
+
+            <table id="table_id" class="table table-bordered table-sm table-striped">
+            <thead>
               <th><center>Nro</center></th>
               <th><center>Nombres</center></th>
               <th><center>Acción</center></th>
-
+            </thead>
+            <tbody>
               <?php
               $counter = 0;
               $query_role = $pdo->prepare("SELECT * FROM roles WHERE enable_role = '1'");
@@ -73,6 +102,7 @@ include('../layout/admin/data_user_session.php');
                 <?php
               }
               ?>
+            </tbody>
             </table>
           </div>
       </div>

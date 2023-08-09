@@ -40,7 +40,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,80), true, 'UTF-8', fa
 
 // set document information
 $pdf->setCreator(PDF_CREATOR);
-$pdf->setAuthor('Instituto Yavirac');
+$pdf->setAuthor('Instituto Superior Tecnológico de Turismo y Patrimonio "Yavirac"');
 $pdf->setTitle('Imprimir Ticket');
 $pdf->setSubject('');
 $pdf->setKeywords('TCPDF, PDF, example, test, guide');
@@ -107,7 +107,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 
 //Close and output PDF document
-$pdf->Output('example_002.pdf', 'I');
+$pdf->Output("GENERAR TICKET '.$identification.'.pdf", 'I');
 
 //============================================================+
 // END OF FILE

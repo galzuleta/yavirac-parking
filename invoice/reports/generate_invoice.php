@@ -67,7 +67,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(79,180), true, 'UTF-8', f
 
 // set document information
 $pdf->setCreator(PDF_CREATOR);
-$pdf->setAuthor('Instituto Yavirac');
+$pdf->setAuthor('Instituto Superior Tecnológico de Turismo y Patrimonio "Yavirac"');
 $pdf->setTitle('Imprimir Factura');
 $pdf->setSubject('');
 $pdf->setKeywords('TCPDF, PDF, example, test, guide');
@@ -166,7 +166,7 @@ $pdf->write2DBarcode( $qr, 'QRCODE,M', 8, 103, 80, 80, $style, 'N');
 
 
 //Close and output PDF document
-$pdf->Output('example_002.pdf', 'I');
+$pdf->Output("GENERAR FACTURA'.$identification.'.pdf", 'I');
 
 //============================================================+
 // END OF FILE

@@ -16,9 +16,11 @@ if(isset($_SESSION['usuario_sesion'])) {
 
     }
 } else {
-   // header('Location: '.$URL.'/index.php');
+    //echo "para ingresar a esta plataforma debes iniciar sesión";
+    //header('Location: '.$URL.'/login');
 }
 
 ?>
+
 
 

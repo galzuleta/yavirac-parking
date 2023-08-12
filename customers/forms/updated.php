@@ -34,7 +34,7 @@ include('../../layout/admin/data_user_session.php');
       <center>
         <div class="row">
           <div class="col-md-2">
-            <a href="../../customers/">
+            <a href="../customer.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
                 <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
               </svg>Regresar</a>
@@ -90,15 +90,42 @@ include('../../layout/admin/data_user_session.php');
                 <div class="row">
                   <div class="col-md-6">
                       <label for="">Tipo de Transporte:</label>
-                      <select name="" id="type_transport<?php echo $id_map; ?>" class="form-control" disabled>
-                          <option value="<?php echo $type_transport;?>"><?php echo $type_transport;?></option>
-                      </select>
+                        <select name="" id="type_transport" class="form-control">
+                          <?php
+                            if($type_transport == "MOTOCICLETA"){ ?>
+                              <option value="MOTOCICLETA">MOTOCICLETA</option>
+                              <option value="AUTOMOVIL">AUTOMOVIL</option>
+                              <?php
+                            }else{ ?>
+                              <option value="AUTOMOVIL">AUTOMOVIL</option>
+                              <option value="MOTOCICLETA">MOTOCICLETA</option>
+                              <?php
+                            }
+                          ?>
+                        </select>
                   </div>
 
                   <div class="col-md-6">
                       <label for="">Tipo de Cliente:</label>
-                      <select name="" id="type_customer<?php echo $id_map; ?>" class="form-control" disabled>
-                      <option value="<?php echo $type_customer;?>"><?php echo $type_customer;?></option>
+                      <select name="" id="type_customer" class="form-control">
+                        <?php
+                          if($type_transport == "ESTUDIANTE"){ ?>
+                            <option value="ESTUDIANTE">ESTUDIANTE</option>
+                            <option value="DOCENTE">DOCENTE</option>
+                            <option value="VISITANTE">VISITANTE</option>
+                            <?php
+                          }else if($type_transport == "ESTUDIANTE"){ ?>
+                            <option value="ESTUDIANTE">ESTUDIANTE</option>
+                            <option value="DOCENTE">DOCENTE</option>
+                            <option value="VISITANTE">VISITANTE</option>
+                            <?php
+                          }else{ ?>
+                            <option value="DOCENTE">DOCENTE</option>
+                            <option value="ESTUDIANTE">ESTUDIANTE</option>
+                            <option value="VISITANTE">VISITANTE</option>
+                            <?php
+                          }
+                        ?>
                       </select>
                   </div>
               </div>
@@ -106,7 +133,7 @@ include('../../layout/admin/data_user_session.php');
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-success" id="updated" >Actualizar</button>
-                    <a href="<?php echo $URL;?>../customers/" class="btn btn-danger">Cancelar</a>
+                    <a href="<?php echo $URL;?>../customers/customer.php" class="btn btn-danger">Cancelar</a>
                   </div>
                     <div id="answer"></div>
                   </div>

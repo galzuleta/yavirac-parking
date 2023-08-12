@@ -33,7 +33,7 @@ include('../../layout/admin/data_user_session.php');
       <center>
         <div class="row">
           <div class="col-md-2">
-            <a href="../../users/">
+            <a href="../user.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
                 <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
               </svg>Regresar</a>
@@ -79,6 +79,7 @@ include('../../layout/admin/data_user_session.php');
                   <div class="col-md-9">
                     <label for="email">Correo Electronico:</label>
                     <input class="form-control" id="email" type="email" value="<?php echo $email;?>" >
+                    <div id="email-error" style="color: red;"></div>
                   </div>
                 </div>
 
@@ -91,7 +92,7 @@ include('../../layout/admin/data_user_session.php');
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-success" id="updated" >Actualizar</button>
-                    <a href="<?php echo $URL;?>../users/" class="btn btn-danger">Cancelar</a>
+                    <a href="<?php echo $URL;?>../users/user.php" class="btn btn-danger">Cancelar</a>
                   </div>
                     <div id="answer"></div>
                   </div>
@@ -138,4 +139,29 @@ include('../../layout/admin/data_user_session.php');
     }
   });
     
+</script>
+
+<script>
+    document.getElementById("email").addEventListener("input", function() {
+        var emailInput = document.getElementById("email");
+        var emailError = document.getElementById("email-error");
+        
+        if (!emailInput.checkValidity()) {
+            emailError.textContent = "Por favor, ingrese un correo electrónico válido.";
+            emailInput.style.borderColor = "red"; // Marcar de rojo
+            emailInput.focus(); // Enfocar el campo de entrada
+        } else if (!isValidEmail(emailInput.value)) {
+            emailError.textContent = "El correo electrónico debe tener un formato válido.";
+            emailInput.style.borderColor = "red"; // Marcar de rojo
+            emailInput.focus(); // Enfocar el campo de entrada
+        } else {
+            emailError.textContent = "";
+            emailInput.style.borderColor = ""; // Restaurar el color del borde
+        }
+    });
+
+    function isValidEmail(email) {
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+    }
 </script>

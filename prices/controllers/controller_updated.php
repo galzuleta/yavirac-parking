@@ -25,7 +25,7 @@ $sentence->bindParam('id_price', $id_price);
 if($sentence->execute()){
     echo "Registro Actualizado";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../price.php"</script>
     <?php
 }else{
     echo "No se pudo Actualizar el Registro";

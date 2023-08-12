@@ -19,7 +19,7 @@ $sentence->bindParam('id_price', $id_price);
 
 if($sentence->execute()){
     ?>
-    <script>location.href = "../../prices/"</script>
+    <script>location.href = "../price.php"</script>
     <?php
 }else{
     echo "No se pudo Inactivar el Registro";

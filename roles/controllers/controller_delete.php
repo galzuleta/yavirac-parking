@@ -19,7 +19,7 @@ $sentence->bindParam('id_role', $id_role);
 if($sentence->execute()){
     echo "Registro Inactivo";
     ?>
-    <script>location.href = "../../roles/"</script>
+    <script>location.href = "../role.php"</script>
     <?php
 }else{
     echo "No se pudo Inactivar el Registro";

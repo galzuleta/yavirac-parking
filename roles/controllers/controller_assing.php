@@ -19,7 +19,7 @@ $sentence->bindParam('id', $id_user);
 if($sentence->execute()){
     echo "Se Asigno el Rol Correctamente";
     ?>
-    <script>location.href = "../../users/index.php"</script>
+    <script>location.href = "../../users/user.php"</script>
     <?php
 }else{
     echo "Error al Asignar el Rol al Usuario";

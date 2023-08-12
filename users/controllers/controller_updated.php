@@ -1,5 +1,4 @@
 <?php
-
 include('../../app/config.php');
 
 $name = $_GET['name'];
@@ -11,24 +10,42 @@ $id_user = $_GET['id_user'];
 date_default_timezone_set("America/GUAYAQUIL");
 $update_time = date("Y-m-d H:i:s");
 
-$sentence = $pdo->prepare("UPDATE users SET
-name = :name, lastname = :lastname, email = :email, 
-password_user=:password_user, updated_user=:updated_user WHERE id=:id ");
+// Verificar si el nuevo correo electrónico ya está registrado en la base de datos
+$emailCheckQuery = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = :email AND id != :id");
+$emailCheckQuery->bindParam(':email', $email);
+$emailCheckQuery->bindParam(':id', $id_user);
+$emailCheckQuery->execute();
+$emailCount = $emailCheckQuery->fetchColumn();
 
-$sentence->bindParam('name', $name);
-$sentence->bindParam('lastname', $lastname);
-$sentence->bindParam('email', $email);
-$sentence->bindParam('password_user', $password_user);
-$sentence->bindParam('updated_user', $update_time);
-$sentence->bindParam('id', $id_user);
-
-
-if($sentence->execute()){
-    echo "Registro Actualizado";
+if ($emailCount > 0) {
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>
+        alert("El correo electrónico ya está registrado. Por favor, elige otro.");
+        var emailInput = document.getElementById("email"); // Utilizar ID en lugar de "name"
+        emailInput.style.borderColor = "red"; // Marcar de rojo
+        emailInput.focus(); // Enfocar el campo de entrada
+    </script>
+    
     <?php
-}else{
-    echo "No se pudo Actualizar el Registro";
+} else {
+    $sentence = $pdo->prepare("UPDATE users SET
+    name = :name, lastname = :lastname, email = :email, 
+    password_user = :password_user, updated_user = :updated_user WHERE id = :id ");
+
+    $sentence->bindParam(':name', $name);
+    $sentence->bindParam(':lastname', $lastname);
+    $sentence->bindParam(':email', $email);
+    $sentence->bindParam(':password_user', $password_user);
+    $sentence->bindParam(':updated_user', $update_time);
+    $sentence->bindParam(':id', $id_user);
+
+    if ($sentence->execute()) {
+        echo "Registro Actualizado";
+        ?>
+        <script>location.href = "../user.php"</script>
+        <?php
+    } else {
+        echo "No se pudo Actualizar el Registro";
+    }
 }
 ?>

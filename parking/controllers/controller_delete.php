@@ -19,7 +19,7 @@ $sentence->bindParam('id_map', $id_map);
 if($sentence->execute()){
     echo "Registro Inactivo";
     ?>
-    <script>location.href = "../../parking/"</script>
+    <script>location.href = "../parking.php"</script>
     <?php
 }else{
     echo "No se pudo Inactivar el Registro";

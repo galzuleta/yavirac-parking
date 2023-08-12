@@ -4,7 +4,6 @@ CREATE TABLE users(
     lastname                VARCHAR (255) NOT NULL,
     role                    VARCHAR (255) NULL,
     email                   VARCHAR (255) NOT NULL UNIQUE,
-    email_verify            VARCHAR (255) NULL UNIQUE,
     password_user           VARCHAR (255) NOT NULL,
     token                   VARCHAR (255) NULL,
     created_user            DATETIME        NULL  DEFAULT CURRENT_TIMESTAMP,

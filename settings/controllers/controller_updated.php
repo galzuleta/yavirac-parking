@@ -32,7 +32,7 @@ $sentence->bindParam('id_setting', $id_setting);
 if($sentence->execute()){
     echo "Registro Actualizado";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../setting.php"</script>
     <?php
 }else{
     echo "No se pudo Actualizar el Registro";

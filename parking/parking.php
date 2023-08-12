@@ -93,7 +93,7 @@ include('../layout/admin/data_user_session.php');
                 $counter = $counter + 1;
                 ?>
                   <tr>
-                    <td><?php echo $no_space;?></td>
+                    <td><?php echo $counter;?></td>
                     <td><?php echo $enable_space;?></td>
                     <td><?php echo $observation;?></td>
                     <td>

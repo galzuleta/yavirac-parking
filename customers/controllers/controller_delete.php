@@ -19,7 +19,7 @@ $sentence->bindParam('id_customer', $id_customer);
 if($sentence->execute()){
     echo "Registro Inactivo";
     ?>
-    <script>location.href = "../../customers/"</script>
+    <script>location.href = "../customer.php"</script>
     <?php
 }else{
     echo "No se pudo Inactivar el Registro";

@@ -19,7 +19,7 @@ $sentence->bindParam('id_setting', $id_setting);
 if($sentence->execute()){
     echo "Registro Inactivo";
     ?>
-    <script>location.href = "../../settings/"</script>
+    <script>location.href = "../setting.php"</script>
     <?php
 }else{
     echo "No se pudo Inactivar el Registro";

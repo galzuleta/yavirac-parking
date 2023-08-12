@@ -28,7 +28,7 @@ $sentence->bindParam(':id_customer', $id_customer);
 if ($sentence->execute()) {
     echo "Registro Actualizado";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../customer.php"</script>
     <?php
 } else {
     echo "No se pudo Actualizar el Registro";

@@ -24,7 +24,7 @@ $sentence->bindParam(':country',$country);
 if($sentence->execute()){
     echo "Registro guardado";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../setting.php"</script>
     <?php
 }else{
     echo "No se pudo guardar el registro";

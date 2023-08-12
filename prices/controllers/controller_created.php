@@ -17,7 +17,7 @@ $sentence->bindParam('type_transport', $type_transport);
 if($sentence->execute()){
     echo "Registro guardado con éxito";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../price.php"</script>
     <?php
 }else{
     echo "No se pudo guardar el registro";

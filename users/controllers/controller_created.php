@@ -19,7 +19,7 @@ $sentence->bindParam('password_user', $password_user);
 if($sentence->execute()){
     echo "Registro guardado";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../user.php"</script>
     <?php
 }else{
     echo "No se pudo guardar el registro";

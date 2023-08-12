@@ -10,7 +10,7 @@ $sentence->bindParam('name', $name);
 if($sentence->execute()){
     echo "Registro guardado con éxito";
     ?>
-    <script>location.href = "../index.php"</script>
+    <script>location.href = "../role.php"</script>
     <?php
 }else{
     echo "No se pudo guardar el registro";

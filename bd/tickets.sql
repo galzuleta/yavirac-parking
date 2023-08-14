@@ -12,6 +12,7 @@ CREATE TABLE tickets(
     entry_time                     TIME NOT NULL,
     out_date                       DATE NOT NULL,
     ticket_status                  VARCHAR (255) NOT NULL,
+    observation                    VARCHAR (10000) NULL,
     user_session                   VARCHAR (255) NOT NULL,
     
     created_ticket                 DATETIME        NULL  DEFAULT CURRENT_TIMESTAMP,

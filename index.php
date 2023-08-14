@@ -11,18 +11,16 @@ include('layout/admin/data_user_session.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link href="public/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/stiles.css">
     <title>Instituto Superior Tecnológico de Turismo y Patrimonio "Yavirac"</title>
 </head>
-<body style="background-image:url(public/img/piso.png);
-    
-    z-index: -3;
-    background-size: 100vw 100vh">
+<body style="background-color: #F0F8FF">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-    <img src="public/img/logo1.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
-      Yavi Parking
+    <img src="public/img/logo1.png"  alt="" width="50" height="50" class="d-inline-block align-text-center">
+      <b>Yavi Parking </b>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,27 +28,22 @@ include('layout/admin/data_user_session.php');
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+          <a class="nav-link active" aria-current="page" href="index.php">INICIO</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">SOBRE NOSOTROS</a>
+          <a class="nav-link active" href="informations/about_us.php">SOBRE NOSOTROS</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            PROMOCIONES
+          <a class="nav-link active " href="informations/price_page.php">
+            TARIFAS
           </a>
-          <ul class="dropdown-menu navbar-dark bg-light" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="#">MENSUALES</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">DIAS</a></li>
-          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">CONTACTANOS</a>
+          <a class="nav-link active" href="informations/contact.php">CONTÁCTANOS</a>
         </li>
       </ul>
       <form class="d-flex">
-        <button type="button" class="btn btn-default" style="background-color:rgb(255, 112, 67);" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-default" style="background-color:rgb(255, 112, 67); color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Ingresar
         </button>
       </form>
@@ -74,7 +67,7 @@ include('layout/admin/data_user_session.php');
                 <center>
                   <b><font face="Alex Brush" size="4"><?php echo $no_space;?></font></b>
                   <h2></h2>
-                  <button class="btn btn-default" style="background-color:rgb(33, 33, 33); color: white; width:100%; height:120px" >
+                  <button class="btn btn-default" style=" background-color: #2980B9; color: white; width:100%; height:120px" >
                     <p><?php echo $enable_space ?></p>
                   </button>
                 </center>
@@ -86,7 +79,7 @@ include('layout/admin/data_user_session.php');
                 <center>
                   <b><font face="Alex Brush" size="4"><?php echo $no_space;?></font></b>
                   <h2></h2>
-                  <button class="btn btn-info"  >
+                  <button class="btn btn-default" style="background-color:rgb(255, 112, 67)"  >
                     <img src="<?php echo $URL;?>/public/img/auto.png" width="50px" alt="">
                   </button>
                   <p><?php echo $enable_space ?></p>
@@ -101,12 +94,12 @@ include('layout/admin/data_user_session.php');
       </div>
   </div>
 </div>
-
-
     <script src="public/js/jquery-3.7.0.min.js" ></script>
     <script src="public/js/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="public/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-</body>
+    <?php include('layout/admin/footer_index.php'); ?>
+    <?php include('layout/admin/head.php'); ?>
+  </body>
 </html>
 
 <!-- Modal -->

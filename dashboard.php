@@ -51,7 +51,7 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                     <b><font face="Alex Brush" size="4"><?php echo $no_space;?></font></b>
                                                     <h2></h2>
                                                     <!-- Button trigger modal -->
-                                                    <button class="btn btn-success" style="width:100%; height:120px" data-toggle="modal" data-target="#modalMapping<?php echo $id_map;?>">
+                                                    <button class="btn btn-default" style=" background-color: #2980B9; width:100%; height:120px" data-toggle="modal" data-target="#modalMapping<?php echo $id_map;?>">
                                                         <p><?php echo $enable_space ?></p>
                                                     </button>
                                                     
@@ -232,7 +232,7 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                     <b><font face="Alex Brush" size="4"><?php echo $no_space;?></font></b>
                                                     <h2></h2>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" id="occupied<?php echo $id_map;?>" class="btn btn-info" data-toggle="modal" data-target="#exampleModal<?php echo $id_map;?>">
+                                                    <button type="button" id="occupied<?php echo $id_map;?>" class="btn btn-default" style="background-color:rgb(255, 112, 67)" data-toggle="modal" data-target="#exampleModal<?php echo $id_map;?>">
                                                         <img src="<?php echo $URL;?>/public/img/auto.png" width="50px" alt="">
                                                     </button>
 

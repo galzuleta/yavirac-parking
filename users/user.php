@@ -175,26 +175,26 @@ include('../layout/admin/data_user_session.php');
                                               </div>
                                             
                                               <div class="form-group">
-                                              <div class="mb-3 row">
-                                                <label for=""  class="col-sm-2 col-form-label" >Rol:</label>
-                                                  <div class="col-sm-10">
-                                                  <select name="role" id="" class="form-control"   >
-                                                    <?php
-                                                      $query_role = $pdo->prepare("SELECT * FROM roles WHERE enable_role = '1'");
-                                                      $query_role->execute();
-                                                      $roles = $query_role->fetchAll(PDO::FETCH_ASSOC);
-                                                      foreach($roles as $role){
-                                                        $id_role = $role['id_role'];
-                                                        $name = $role['name'];
-                                                    ?>
-                                                    <option value="<?php echo $name;?>" ><?php echo $name;?></option>
-                                                    <?php    
-                                                      }
-                                                    ?>                               
-                                                  </select>
+                                                <div class="mb-3 row">
+                                                  <label for=""  class="col-sm-2 col-form-label" >Rol:</label>
+                                                    <div class="col-sm-10">
+                                                      <select name="role" id="" class="form-control"   >
+                                                        <?php
+                                                          $query_role = $pdo->prepare("SELECT * FROM roles WHERE enable_role = '1'");
+                                                          $query_role->execute();
+                                                          $roles = $query_role->fetchAll(PDO::FETCH_ASSOC);
+                                                          foreach($roles as $role){
+                                                            $id_role = $role['id_role'];
+                                                            $name = $role['name'];
+                                                        ?>
+                                                        <option value="<?php echo $name;?>" ><?php echo $name;?></option>
+                                                        <?php    
+                                                          }
+                                                        ?>                               
+                                                      </select>
+                                                  </div>
                                                 </div>
                                               </div>
-                                            </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

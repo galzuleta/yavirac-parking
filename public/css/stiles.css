@@ -15,6 +15,10 @@
     overflow-x: auto;
 }
 
+.navbar-nav a.nav-link:hover {
+    background-color: #333; /* Cambia el color de fondo al pasar el cursor */
+    color: white; /* Cambia el color del texto al pasar el cursor */
+  }
 
 
 

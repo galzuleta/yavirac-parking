@@ -72,7 +72,6 @@ $html = '
         <td style="background-color: #c0c0c0;text-align: center">Cédula</td>
         <td style="background-color: #c0c0c0;text-align: center" >Nombres y Apellidos</td>
         <td style="background-color: #c0c0c0;text-align: center" width="110px" >Trasporte</td>
-        <td style="background-color: #c0c0c0;text-align: center" width="110px">Cliente</td>
         <td style="background-color: #c0c0c0;text-align: center">Placa</td>
         <td style="background-color: #c0c0c0;text-align: center">Cubículo</td>
         <td style="background-color: #c0c0c0;text-align: center" width="110px">Fecha ingreso</td>
@@ -90,7 +89,6 @@ $html = '
             $name_customer = $ticket['name_customer'];
             $lastname_customer = $ticket['lastname_customer'];
             $type_transport = $ticket['type_transport'];
-            $type_customer = $ticket['type_customer'];
             $plate = $ticket['plate'];
             $cubicle = $ticket['cubicle'];
             $entry_date = $ticket['entry_date'];
@@ -104,7 +102,6 @@ $html = '
             <td style="text-align: center">'.$identification.'</td>
             <td>'.$name_customer." ".$lastname_customer.'</td>
             <td style="text-align: center">'.$type_transport.'</td>
-            <td style="text-align: center">'.$type_customer.'</td>
             <td style="text-align: center">'.$plate.'</td>
             <td style="text-align: center">'.$cubicle.'</td>
             <td style="text-align: center">'.$entry_date.'</td>

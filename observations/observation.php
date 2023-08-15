@@ -71,7 +71,6 @@ include('../layout/admin/data_user_session.php');
                 <th><center>Cédula</center></th>
                 <th><center>Nombres y Apellidos</center></th>
                 <th><center>Transporte</center></th>
-                <th><center>Cliente</center></th>
                 <th><center>Placa</center></th>
                 <th><center>Cubículo</center></th>
                 <th><center>Fecha entrada</center></th>
@@ -81,7 +80,7 @@ include('../layout/admin/data_user_session.php');
                 <tbody>
                 <?php
                 $counter = 0;
-                $query_ticket = $pdo->prepare("SELECT * FROM tickets WHERE enable_ticket = '1'");
+                $query_ticket = $pdo->prepare("SELECT * FROM tickets WHERE enable_ticket = '1' ORDER BY id_ticket DESC");
                 $query_ticket->execute();
                 $tickets = $query_ticket->fetchAll(PDO::FETCH_ASSOC);
                 foreach($tickets as $ticket){
@@ -90,7 +89,6 @@ include('../layout/admin/data_user_session.php');
                     $name_customer = $ticket['name_customer'];
                     $lastname_customer = $ticket['lastname_customer'];
                     $type_transport = $ticket['type_transport'];
-                    $type_customer = $ticket['type_customer'];
                     $plate = $ticket['plate'];
                     $cubicle = $ticket['cubicle'];
                     $entry_date = $ticket['entry_date'];
@@ -104,7 +102,6 @@ include('../layout/admin/data_user_session.php');
                         <td><?php echo $identification;?></td>
                         <td><?php echo $name_customer.' '.$lastname_customer;?></td>
                         <td><?php echo $type_transport;?></td>
-                        <td><?php echo $type_customer;?></td>
                         <td><?php echo $plate;?></td>
                         <td><?php echo $cubicle;?></td>
                         <td><?php echo $entry_date;?></td>

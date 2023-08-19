@@ -50,7 +50,7 @@ include('../../layout/admin/data_user_session.php');
               <div class="card-body " >
                 <div class="form-group">
                   <div class="col-md-9">
-                    <label for="name">Nombres <span style="color: red"><b>*</b></label>
+                    <label id="alerta2" for="name">Nombres <span style="color: red"><b>*</b></label>
                     <input class="form-control" id="name" type="text">
                   </div>
                 </div>
@@ -79,8 +79,10 @@ include('../../layout/admin/data_user_session.php');
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-primary" id="save" >Guardar</button>
-                    <a href="<?php echo $URL;?>../users/user.php" class="btn btn-danger">Cancelar</a>
+                    <a id="btn_cancelar" class="btn btn-danger">Cancelar</a>
                   </div>
+                                          
+
                     <div id="answer"></div>
                   </div>
                 </div>
@@ -98,6 +100,8 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
+
 <script>
   $('#save').click(function (){
     var name = $('#name').val();
@@ -106,16 +110,52 @@ include('../../layout/admin/data_user_session.php');
     var password_user = $('#password_user').val();
 
     if (name == "") {
-        alert('Debe de llenar el campo Nombres');
+      setTimeout(function() {
+        var nameField = document.getElementById("name");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Nombres',
+            showConfirmButton: false
+          });
+        }
+      });
         $('#name').focus();
     } else if (lastname == "") {
-        alert('Debe de llenar el campo Apellidos');
+      setTimeout(function() {
+        var nameField = document.getElementById("lastname");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Apellidos',
+            showConfirmButton: false
+          });
+        }
+      });
         $('#lastname').focus();
     } else if (email == "") {
-        alert('Debe de llenar el campo Correo Electronico');
+      setTimeout(function() {
+        var nameField = document.getElementById("email");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Correo Electrónico',
+            showConfirmButton: false
+          });
+        }
+      });
         $('#email').focus();
     } else if (password_user == "") {
-        alert('Debe de llenar el campo Contraseña');
+      setTimeout(function() {
+        var nameField = document.getElementById("password_user");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Contraseña',
+            showConfirmButton: false
+          });
+        }
+      });
         $('#password_user').focus();
     } else {
       var url = '../controllers/controller_created.php';

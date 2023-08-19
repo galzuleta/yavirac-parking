@@ -17,9 +17,11 @@ $sentence->bindParam('id_map', $cubicle);
 
 
 if($sentence->execute()){
-    echo "Registro Actualizado";
+    session_start();
+    $_SESSION['msm'] = "¡Actualización exitosa!";
     
 }else{
-    echo "No se pudo Actualizar el Registro";
+    session_start();
+    $_SESSION['error'] = "Ocurrió un problema al intentar guardar los cambios";
 }
 ?>

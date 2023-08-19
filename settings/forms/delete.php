@@ -111,7 +111,7 @@ include('../../layout/admin/data_user_session.php');
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-danger" id="delete_setting" >Eliminar</button>
-                    <a href="<?php echo $URL;?>../settings/setting.php" class="btn btn-default">Cancelar</a>
+                    <a id="cancelar_setting" class="btn btn-default">Cancelar</a>
                   </div>
                     <div id="answer"></div>
                   </div>
@@ -130,14 +130,27 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
 <script>
   $('#delete_setting').click(function (){
      var id_setting = '<?php echo $idseid_setting = $_GET['id']; ?>'
 
-      var url = '../controllers/controller_delete.php';
-        $.get(url,{ id_setting:id_setting},function (datos) {
-          $('#answer').html(datos);
-       });
+     Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar este registro?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí',
+        confirmButtonColor: '#007BFF',
+        cancelButtonText: 'No',
+        cancelButtonColor: '#d33',
+        focusCancel: true,
+        preConfirm: () => {
+          var url = '../controllers/controller_delete.php';
+            $.get(url,{ id_setting:id_setting},function (datos) {
+              $('#answer').html(datos);
+          });
+        }
+      });
   });
     
 </script>

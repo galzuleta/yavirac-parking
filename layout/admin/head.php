@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="<?php echo $URL;?>/public/css/stiles.css">
 <!-- jQuery -->
 <script src="<?php echo $URL;?>/app/templates/AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- datatable -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />

@@ -18,9 +18,19 @@ $data_customers = $query_customer->fetchAll(PDO::FETCH_ASSOC);
 foreach ($data_customers as $data_customer) {
     $counter_customer = $counter_customer + 1;
 }
-if ($counter_customer == "0") {
-    echo "No hay ningún registro igual";
+if ($counter_customer == "0") {?>
+    <script>
+        setTimeout(function() {
+          Swal.fire({
+            icon: 'success',
+            title: '¡Bienvenido a nuestra comunidad! ',
+            showConfirmButton: false
+          });
+        
+      });
+    </script>
 
+    <?php
     $sentence = $pdo->prepare("INSERT INTO customers (name, lastname, identification, type_transport, type_customer, plate) 
                         VALUES (:name, :lastname, :identification, :type_transport, :type_customer, :plate)");
 
@@ -32,12 +42,15 @@ if ($counter_customer == "0") {
     $sentence->bindParam(':plate', $plate);
 
     if ($sentence->execute()) {
-        echo 'success';
+        session_start();
+        $_SESSION['msm'] = "¡Felicidades! Tu registro se ha completado con éxito.";
     } else {
-        echo 'Error al registrar en la base de datos';
+        session_start();
+        $_SESSION['error'] = "Lo sentimos, ha habido un error al intentar guardar tu registro.";
     }
 } else {
-    echo "Este cliente ya se encuentra registrado";
+    session_start();
+    $_SESSION['error'] = "Parece que ya tenemos un registro asociado con esta información. ";
 }
 ?>
 

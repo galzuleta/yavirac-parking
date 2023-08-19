@@ -19,7 +19,10 @@ if($sentence->execute()){
     ?>
     <script>location.href = "../price.php"</script>
     <?php
+    session_start();
+    $_SESSION['msm'] = "¡Felicidades! Tu registro se ha completado con éxito.";
 }else{
-    echo "No se pudo guardar el registro";
+    session_start();
+    $_SESSION['error'] = "Lo sentimos, ha habido un error al intentar guardar tu registro.";
 }
 ?>

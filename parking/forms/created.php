@@ -67,7 +67,7 @@ include('../../layout/admin/data_user_session.php');
                       </div>
                       <div class="form-group">
                         <button type="button"  class="btn btn-primary" id="save" >Guardar</button>
-                          <a href="<?php echo $URL;?>../parking/parking.php" class="btn btn-danger">Cancelar</a>
+                          <a id="cancelar_parking" class="btn btn-danger">Cancelar</a>
                         </div>
                           <div id="answer"></div>
                         </div>
@@ -86,6 +86,7 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
 <script>
   $('#save').click(function (){
     var no_space = $('#no_space').val();
@@ -93,7 +94,16 @@ include('../../layout/admin/data_user_session.php');
     var observation = $('#observation').val();
 
     if(no_space == ""){
-      alert('Debe de llenar el campo Número del Espacio');
+      setTimeout(function() {
+        var nameField = document.getElementById("no_space");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Número de Espacio',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#no_space').focus();
     }else{
       var url = '../controllers/controller_created.php';

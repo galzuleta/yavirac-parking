@@ -111,7 +111,7 @@ include('../../layout/admin/data_user_session.php');
 
                       <div class="form-group">
                         <button type="button"  class="btn btn-success" id="updated_setting" >Actualizar</button>
-                          <a href="<?php echo $URL;?>../settings/setting.php" class="btn btn-danger">Cancelar</a>
+                          <a id="cancelar_setting" class="btn btn-danger">Cancelar</a>
                         </div>
                           <div id="answer"></div>
                         </div>
@@ -131,6 +131,7 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
 <script>
   $('#updated_setting').click(function (){
     var name_parking = $('#name_parking').val();
@@ -144,31 +145,94 @@ include('../../layout/admin/data_user_session.php');
     var id_setting = '<?php echo $id_setting = $_GET['id']; ?>'
 
     if(name_parking == ""){
-      alert('Debe de llenar el campo Nombres');
+      setTimeout(function() {
+        var nameField = document.getElementById("name_parking");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Nombre',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#name_parking').focus();
     }
     else if(entity_activity == ""){
-      alert('Debe de llenar el campo Apellidos');
+      setTimeout(function() {
+        var nameField = document.getElementById("entity_activity");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Actividad',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#entity_activity').focus();
     }
     else if(phone == ""){
-      alert('Debe de llenar el campo Correo Electronico');
+      setTimeout(function() {
+        var nameField = document.getElementById("phone");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Teléfono',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#phone').focus();
     }
     else if(address == ""){
-      alert('Debe de llenar el campo Contraseña');
+      setTimeout(function() {
+        var nameField = document.getElementById("address");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Dirección',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#address').focus();
     }
     else if(zone == ""){
-      alert('Debe de llenar el campo Contraseña');
+      setTimeout(function() {
+        var nameField = document.getElementById("zone");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Zona',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#zone').focus();
     }
     else if(city == ""){
-      alert('Debe de llenar el campo Contraseña');
+      setTimeout(function() {
+        var nameField = document.getElementById("city");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Ciudad',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#city').focus();
     }
     else if(country == ""){
-      alert('Debe de llenar el campo Contraseña');
+      setTimeout(function() {
+        var nameField = document.getElementById("country");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo País',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#country').focus();
     }
     else{

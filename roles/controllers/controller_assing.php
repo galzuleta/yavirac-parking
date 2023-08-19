@@ -21,8 +21,11 @@ if($sentence->execute()){
     ?>
     <script>location.href = "../../users/user.php"</script>
     <?php
+    session_start();
+    $_SESSION['msm'] = "Se registro exitosamente";
 }else{
-    echo "Error al Asignar el Rol al Usuario";
+    session_start();
+    $_SESSION['error'] = "Error al introducir la información";
 }
 ?>
 

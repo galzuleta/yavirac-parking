@@ -329,7 +329,7 @@ $counter_no_invoice = $counter_no_invoice + 1;
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Atrás</button>
                                                             <a href="tickets/forms/reprint_ticket.php?id=<?php echo $id_ticket;?>" class="btn btn-info">Re-Imprimir</a>
                                                             <a href="tickets/controllers/controller_void_ticket.php?id=<?php echo $id_ticket;?>&&cubicle=<?php echo $cubicle;?>" class="btn btn-danger">Anular Ticket</a>
                                                             <button type="button" class="btn btn-success" id="invoice<?php echo $id_map;?>">Facturar</button>

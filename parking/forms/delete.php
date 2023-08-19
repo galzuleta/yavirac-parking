@@ -81,7 +81,7 @@ include('../../layout/admin/data_user_session.php');
                 </div>
                 <div class="form-group">
                   <button type="button"  class="btn btn-danger" id="delete" >Eliminar</button>
-                    <a href="<?php echo $URL;?>../parking/parking.php" class="btn btn-default">Cancelar</a>
+                    <a id="cancelar_parking" class="btn btn-default">Cancelar</a>
                   </div>
                     <div id="answer"></div>
                   </div>
@@ -100,14 +100,26 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
 <script>
   $('#delete').click(function (){
      var id_map = '<?php echo $id_map = $_GET['id']; ?>'
-
-      var url = '../controllers/controller_delete.php';
-        $.get(url,{ id_map:id_map},function (datos) {
-          $('#answer').html(datos);
-       });
+     
+     Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar este registro?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí',
+        confirmButtonColor: '#007BFF',
+        cancelButtonText: 'No',
+        cancelButtonColor: '#d33',
+        focusCancel: true,
+        preConfirm: () => {
+          var url = '../controllers/controller_delete.php';
+          $.get(url,{ id_map:id_map},function (datos) {
+            $('#answer').html(datos);
+        });
+        }
+      });
   });
-    
 </script>

@@ -133,11 +133,11 @@ include('../../layout/admin/data_user_session.php');
                     <hr> 
                     <div class="row justify-content-center">
                         <div class="col-md-12">
-                            <a href="../price.php" class="btn btn-default">Cancelar</a>
+                            <a id="cancelar_prices" class="btn btn-default">Cancelar</a>
                             <button class="btn btn-success" id="update_price">Actualizar precio</button>
                         </div>
                     </div>
-
+                    <script src="../../alert.js" ></script>
                     <script>
                         $('#update_price').click(function () {
                             var amount = $('#amount').val();
@@ -147,12 +147,31 @@ include('../../layout/admin/data_user_session.php');
                             var id_price = <?php echo $id_price_get;?>;
 
                             if(amount == ""){
-                                alert("Debe de llenar el campo cantidad...");
+                                setTimeout(function() {
+                                  var nameField = document.getElementById("amount");
+                                  if (nameField) {
+                                    Swal.fire({
+                                      icon: 'warning',
+                                      title: 'Debe llenar el campo Cantidad',
+                                      showConfirmButton: false
+                                    });
+                                  }
+                                });
                                 $('#amount').focus();
-                            }else if(price == ""){
-                                alert("Debe de llenar el campo precio...");
+                              }
+                              else if(price == ""){
+                                setTimeout(function() {
+                                  var nameField = document.getElementById("price");
+                                  if (nameField) {
+                                    Swal.fire({
+                                      icon: 'warning',
+                                      title: 'Debe llenar el campo Precio',
+                                      showConfirmButton: false
+                                    });
+                                  }
+                                });
                                 $('#price').focus();
-                            }else {
+                              }else {
                                 var url = '../controllers/controller_updated.php';
                                 $.get(url,{amount:amount, detail:detail, price:price, type_transport:type_transport ,id_price:id_price},function (datos) {
                                 $('#answer').html(datos);
@@ -176,4 +195,5 @@ include('../../layout/admin/data_user_session.php');
 <?php include('../../layout/admin/script.php'); ?>
 </body>
 </html>
+
 

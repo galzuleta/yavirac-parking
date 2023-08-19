@@ -42,7 +42,32 @@ include('../layout/admin/data_user_session.php');
                   </svg>
               </a>
           </div>
-
+          <?php 
+            if (isset($_SESSION['msm'] )){
+              $answer = $_SESSION['msm']; ?>
+            <script>
+              Swal.fire(
+                '<?php echo $answer?>!',
+                '',
+                'success'
+              )
+            </script>
+            <?php
+              unset($_SESSION['msm']);
+            }
+            else if (isset($_SESSION['error'] )){
+              $answer_e = $_SESSION['error']; ?>
+            <script>
+              Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                '<?php echo $answer_e?>!',
+              })
+            </script>
+            <?php
+              unset($_SESSION['msm']);
+            }
+          ?>
         </div><br>
       <div class="card card-outline card-info">
         <div class="card-body" >
@@ -199,7 +224,7 @@ include('../layout/admin/data_user_session.php');
                                         </div>
                                         <div class="modal-footer">
                                           <button type="submit" name="submitSave" class="btn btn-primary">Asignar Rol</button>
-                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                          <button type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -223,5 +248,7 @@ include('../layout/admin/data_user_session.php');
 
 </body>
 </html>
+
+<script src="../alert.js" ></script>
 
 

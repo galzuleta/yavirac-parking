@@ -21,7 +21,10 @@ if($sentence->execute()){
     ?>
     <script>location.href = "../parking.php"</script>
     <?php
+    session_start();
+    $_SESSION['msm'] = "Se elimino exitosamente";
 }else{
-    echo "No se pudo Inactivar el Registro";
+    session_start();
+    $_SESSION['error'] = "Lamentablemente, no ha sido posible eliminar el registro en este momento. ";
 }
 ?>

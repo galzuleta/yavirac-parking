@@ -133,7 +133,7 @@ include('../../layout/admin/data_user_session.php');
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-success" id="updated" >Actualizar</button>
-                    <a href="<?php echo $URL;?>../customers/customer.php" class="btn btn-danger">Cancelar</a>
+                    <a id="cancelar_customer" class="btn btn-danger">Cancelar</a>
                   </div>
                     <div id="answer"></div>
                   </div>
@@ -152,6 +152,7 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
 <script>
   $('#updated').click(function (){
     var identification = $('#identification').val();
@@ -163,24 +164,54 @@ include('../../layout/admin/data_user_session.php');
     var id_customer = '<?php echo $id_customer = $_GET['id']; ?>'
 
     if(identification == ""){
-      alert('Debe de llenar el campo Cédula');
+      setTimeout(function() {
+        var nameField = document.getElementById("identification");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Cédula',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#identification').focus();
     }
     else if(name == ""){
-      alert('Debe de llenar el campo Nombres');
+      setTimeout(function() {
+        var nameField = document.getElementById("name");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Nombres',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#name').focus();
     }else if(lastname == ""){
-      alert('Debe de llenar el campo Apellidos');
+      setTimeout(function() {
+        var nameField = document.getElementById("lastname");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Apellidos',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#lastname').focus();
-    }else if(type_transport == ""){
-      alert('Debe de llenar el campo Tipo Transporte');
-      $('#type_transport').focus();
     }else if(plate == ""){
-      alert('Debe de llenar el campo Placa');
+      setTimeout(function() {
+        var nameField = document.getElementById("plate");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Placa',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#plate').focus();
-    }else if(type_customer == ""){
-      alert('Debe de llenar el campo Tipo Customer');
-      $('#type_customer').focus();
     }
     else{
       var url = '../controllers/controller_updated.php';

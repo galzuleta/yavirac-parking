@@ -30,7 +30,10 @@ if ($sentence->execute()) {
     ?>
     <script>location.href = "../customer.php"</script>
     <?php
+    session_start();
+    $_SESSION['msm'] = "¡Actualización exitosa!";
 } else {
-    echo "No se pudo Actualizar el Registro";
+    session_start();
+        $_SESSION['error'] = "Ocurrió un problema al intentar guardar los cambios";
 }
 ?>

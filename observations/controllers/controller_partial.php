@@ -15,12 +15,14 @@ if(isset($_POST['submitSave'])) {
     $sentence->bindParam(':id_ticket', $id);
 
     if($sentence->execute()) {
-        echo "Observación actualizada correctamente";
+        session_start();
+        $_SESSION['msm'] = "¡Actualización exitosa!";
         ?>
         <script>location.href = "../../observations/observation.php"</script>
         <?php
     } else {
-        echo "Error al actualizar la observación";
+        session_start();
+        $_SESSION['error'] = "Ocurrió un problema al intentar guardar los cambios";
     }
 }
 ?>

@@ -89,7 +89,7 @@ include('../../layout/admin/data_user_session.php');
                     <div class="row justify-content-center">
                       <div class="col-md-12">
                         <button type="button"  class="btn btn-info" id="save" >Guardar</button>
-                        <a href="<?php echo $URL;?>../prices/price.php" class="btn btn-default">Cancelar</a>
+                        <a id="cancelar_prices" class="btn btn-default">Cancelar</a>
                       </div>
                       <div id="answer"></div>
                     </div>
@@ -109,6 +109,7 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
 <script>
   $('#save').click(function (){
     var amount = $('#amount').val();
@@ -117,11 +118,29 @@ include('../../layout/admin/data_user_session.php');
     var type_transport = $('#type_transport').val();
 
     if(amount == ""){
-      alert('Debe de llenar el campo Cantidad');
-      $('#name').focus();
+      setTimeout(function() {
+        var nameField = document.getElementById("amount");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Cantidad',
+            showConfirmButton: false
+          });
+        }
+      });
+      $('#amount').focus();
     }
     else if(price == ""){
-      alert('Debe de llenar el campo Precio');
+      setTimeout(function() {
+        var nameField = document.getElementById("price");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Precio',
+            showConfirmButton: false
+          });
+        }
+      });
       $('#price').focus();
     }
     else{

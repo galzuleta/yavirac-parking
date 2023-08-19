@@ -21,7 +21,10 @@ if($sentence->execute()){
     ?>
     <script>location.href = "../customer.php"</script>
     <?php
+    session_start();
+    $_SESSION['msm'] = "¿Estás seguro de que deseas eliminar este registro?";
 }else{
-    echo "No se pudo Inactivar el Registro";
+    session_start();
+        $_SESSION['error'] = "Lamentablemente, no ha sido posible eliminar el registro en este momento. ";
 }
 ?>

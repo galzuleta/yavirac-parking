@@ -22,11 +22,14 @@ $sentence->bindParam(':city',$city);
 $sentence->bindParam(':country',$country);
 
 if($sentence->execute()){
-    echo "Registro guardado";
     ?>
     <script>location.href = "../setting.php"</script>
     <?php
+    session_start();
+    $_SESSION['msm'] = "¡Felicidades! Tu registro se ha completado con éxito.";
 }else{
     echo "No se pudo guardar el registro";
+    session_start();
+    $_SESSION['error'] = "Lo sentimos, ha habido un error al intentar guardar tu registro.";
 }
 ?>

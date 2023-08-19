@@ -92,7 +92,7 @@ include('../../layout/admin/data_user_session.php');
 
                 <div class="form-group">
                   <button type="button"  class="btn btn-success" id="updated" >Actualizar</button>
-                    <a href="<?php echo $URL;?>../users/user.php" class="btn btn-danger">Cancelar</a>
+                  <a id="btn_cancelar" class="btn btn-danger">Cancelar</a>
                   </div>
                     <div id="answer"></div>
                   </div>
@@ -111,6 +111,8 @@ include('../../layout/admin/data_user_session.php');
 </body>
 </html>
 
+<script src="../../alert.js" ></script>
+
 <script>
   $('#updated').click(function (){
     var name = $('#name').val();
@@ -119,18 +121,54 @@ include('../../layout/admin/data_user_session.php');
     var password_user = $('#password_user').val();
     var id_user = '<?php echo $id_get = $_GET['id']; ?>'
 
-    if(name == ""){
-      alert('Debe de llenar el campo Nombres');
-      $('#name').focus();
-    }else if(lastname == ""){
-      alert('Debe de llenar el campo Apellidos');
-      $('#lastname').focus();
-    }else if(email == ""){
-      alert('Debe de llenar el campo Correo Electronico');
-      $('#email').focus();
-    }else if(password_user == ""){
-      alert('Debe de llenar el campo Contraseña');
-      $('#password_user').focus();
+    if (name == "") {
+      setTimeout(function() {
+        var nameField = document.getElementById("name");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Nombres',
+            showConfirmButton: false
+          });
+        }
+      });
+        $('#name').focus();
+    } else if (lastname == "") {
+      setTimeout(function() {
+        var nameField = document.getElementById("lastname");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Apellidos',
+            showConfirmButton: false
+          });
+        }
+      });
+        $('#lastname').focus();
+    } else if (email == "") {
+      setTimeout(function() {
+        var nameField = document.getElementById("email");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Correo Electrónico',
+            showConfirmButton: false
+          });
+        }
+      });
+        $('#email').focus();
+    } else if (password_user == "") {
+      setTimeout(function() {
+        var nameField = document.getElementById("password_user");
+        if (nameField) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Debe llenar el campo Contraseña',
+            showConfirmButton: false
+          });
+        }
+      });
+        $('#password_user').focus();
     }else{
       var url = '../controllers/controller_updated.php';
         $.get(url,{name:name, lastname:lastname, email:email, password_user: password_user, id_user:id_user},function (datos) {

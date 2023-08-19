@@ -36,11 +36,6 @@
           <a class="nav-link active" href="../informations/contact.php">CONTÁCTANOS</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <button type="button" class="btn btn-default" style="background-color:rgb(255, 112, 67); color: white;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Ingresar
-        </button>
-      </form>
     </div>
   </div>
 </nav><br><br><br>
